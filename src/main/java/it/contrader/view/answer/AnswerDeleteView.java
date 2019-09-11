@@ -21,7 +21,7 @@ public class AnswerDeleteView extends AbstractView
 	@Override
 	public void showResults(Request request) 
 	{
-		if (request!=null) {
+		if (request != null) {
 			System.out.println("Cancellazione andata a buon fine.\n");
 			MainDispatcher.getInstance().callView("Answer", null);
 		}
@@ -47,7 +47,7 @@ public class AnswerDeleteView extends AbstractView
 		request = new Request();
 		request.put("id", id);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("User", "doControl", request);
+		MainDispatcher.getInstance().callAction("Answer", "doControl", request);
 	}
 
 	
