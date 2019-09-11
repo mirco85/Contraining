@@ -21,7 +21,7 @@ public class AnswersController implements Controller {
 		
 		String mode = (String) request.get("mode");
 		
-		String choise = (String) request.get("choice");
+		String choice = (String) request.get("choice");
 		
 		int id;
 		int iduser;
