@@ -3,6 +3,7 @@ package it.contrader.view;
 import java.util.List;
 
 import it.contrader.controller.Request;
+import it.contrader.dto.AnswersDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 
@@ -33,9 +34,9 @@ public class AnswerView extends AbstractView
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
-			List<UserDTO> users = (List<UserDTO>) request.get("users");
-			for (UserDTO u: users)
-				System.out.println(u);
+			List<AnswersDTO> answers = (List<AnswersDTO>) request.get("answers");
+			for (AnswersDTO a: answers)
+				System.out.println(a);
 			    System.out.println();
 		}
 		

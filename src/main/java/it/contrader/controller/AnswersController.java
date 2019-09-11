@@ -3,6 +3,7 @@ package it.contrader.controller;
 import java.util.List;
 
 import it.contrader.dto.AnswersDTO;
+import it.contrader.dto.QuestionDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.AnswersService;
 
@@ -72,6 +73,12 @@ public class AnswersController implements Controller {
 			MainDispatcher.getInstance().callView("Answer", request);
 			break;
 			
+		case "ANSWERLIST":
+			List<AnswersDTO> answerDTO = answersservice.getAll();
+			request.put("answers", answerDTO);
+			MainDispatcher.getInstance().callView("Answer", request);
+			break;	
+		
 		case "GETCHOICE":
 			
 			switch (choice.toUpperCase()) {
