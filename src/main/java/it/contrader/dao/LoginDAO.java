@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import it.contrader.dao.login.CredentialsException;
 import it.contrader.main.ConnectionSingleton;
 
 /**
@@ -18,7 +20,7 @@ public class LoginDAO {
 	private final String QUERY_LOGIN = "SELECT * FROM user WHERE username = ? AND password = ?";
 
 	
-	public String login (String username, String password) {
+	public String login (String username, String password) throws CredentialsException {
 
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -35,6 +37,8 @@ public class LoginDAO {
 				//resultSet = statement.executeQuery();
 				//resultSet.next();
 				usertype = resultSet.getString("usertype");
+			} else {
+				throw new CredentialsException();
 			}
 
 			return usertype;

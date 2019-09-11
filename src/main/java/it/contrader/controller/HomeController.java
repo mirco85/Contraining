@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import it.contrader.dao.login.CredentialsException;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.LoginService;
 
@@ -24,7 +25,14 @@ public class HomeController implements Controller {
 			String password = request.get("password").toString();
 
 			// Qui invoca il Login Service
-			String usertype= loginService.login(username, password);
+			String usertype = null;
+			try {
+				usertype= loginService.login(username, password);
+			} catch(CredentialsException ce) {
+				Request r = new Request();
+				r.put("unknownCredentials", true);
+				MainDispatcher.getInstance().callView("Login", r);
+			}
 		
 			// Reindirizza alla giusta view in base allo usertype
 			switch(usertype.toUpperCase()) {
