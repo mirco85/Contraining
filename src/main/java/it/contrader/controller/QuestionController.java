@@ -47,7 +47,7 @@ public class QuestionController implements Controller {
 			break;
 			
 		case "DELETE":
-			id = Integer.parseInt(request.get("id").toString());
+			id = Integer.parseInt(request.get("idQuestion").toString());
 			questionService.delete(id);
 			request = new Request();
 			request.put("mode", "mode");
@@ -61,7 +61,7 @@ public class QuestionController implements Controller {
 			break;
 			
 		case "UPDATE":
-			id = Integer.parseInt(request.get("id").toString());
+			id = Integer.parseInt(request.get("idQuestion").toString());
 			argument = request.get("argument").toString();
 			text = request.get("text").toString();
 			answer1 = request.get("answer1").toString();

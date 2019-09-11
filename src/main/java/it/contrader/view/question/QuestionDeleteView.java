@@ -32,8 +32,8 @@ public class QuestionDeleteView extends AbstractView {
 	public void submit() {
 		Request request = new Request();
 		request.put("mode", mode);
-		request.put("idquestion", idquestion);
-		MainDispatcher.getInstance().callAction("Quetion", "doControl", request);
+		request.put("idQuestion", idquestion);
+		MainDispatcher.getInstance().callAction("Question", "doControl", request);
 		
 	}
 

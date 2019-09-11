@@ -77,8 +77,17 @@ public class QuestionDTO
 	}
 	@Override
 	public String toString() {
-		return "QuestionDTO [id=" + id + ", argument=" + argument + ", text=" + text + ", answer1=" + answer1
-				+ ", answer2=" + answer2 + ", answer3=" + answer3 + "]";
+		StringBuilder sb = new StringBuilder();
+		String tab = "\t";
+		sb.append(id).append(tab)
+			.append(argument).append(tab)
+			.append(text).append(tab)
+			.append(answer1).append(tab)
+			.append(answer2).append(tab)
+			.append(answer3);
+		
+		
+		return sb.toString();
 	}
 	
 }

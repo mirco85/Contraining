@@ -15,6 +15,7 @@ public class QuestionView extends AbstractView {
 	
 	public QuestionView() {
 	}
+
 	
 
 	public void showResults(Request request) {
@@ -22,8 +23,8 @@ public class QuestionView extends AbstractView {
 		
 		if (request !=null) {
 			
-			System.out.println("\"\\n--------- Gestionedomande del Quiz: ----------\n");
-			System.out.println("IDQuestion\tArgument\t\tText\t\tAnswer1\t\tAnswer2\t\tAnswer3 ");
+			System.out.println("--------- Gestionedomande del Quiz: ----------\n");
+			System.out.println("IDQuestion\tArgument\tText\tAnswer1\tAnswer2\tAnswer3");
 			System.out.print("-------------------------------------------------------------\n");
 			
 			

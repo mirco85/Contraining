@@ -19,7 +19,7 @@ public class QuestionDAO implements DAO<Question>{
 	private final String QUERY_CREATE = "INSERT INTO questions (argument, text, answer1,answer2,answer3) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM questions WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE questions SET argument=?, text=?, answer1=?,answer2=?,answer3=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM question WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM questions WHERE id=?";
 	
 	
 	public QuestionDAO() {
