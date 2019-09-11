@@ -26,7 +26,7 @@ public class QuestionController implements Controller {
 		
 		switch(mode) {
 		case "READ":
-			id = Integer.parseInt(request.get("id").toString());
+			id = Integer.parseInt(request.get("idQuestion").toString());
 			QuestionDTO qDTO = questionService.read(id);
 			request.put("question", qDTO);
 			MainDispatcher.getInstance().callView(sub_package + "QuestionRead", request);

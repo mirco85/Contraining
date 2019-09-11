@@ -6,6 +6,7 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.model.Question;
 import it.contrader.view.AbstractView;
 import it.contrader.controller.Request;
+import it.contrader.dto.QuestionDTO;
 
 public class QuestionReadView extends AbstractView {
 	
@@ -22,7 +23,7 @@ public class QuestionReadView extends AbstractView {
 	
 	public void showResults(Request request) {
 		if (request != null) {
-			Question question = (Question) request.get("question");
+			QuestionDTO question = (QuestionDTO) request.get("question");
 			System.out.println(question);
 			MainDispatcher.getInstance().callView("Question", null);
 			
@@ -40,7 +41,7 @@ public class QuestionReadView extends AbstractView {
 	public void submit() {
 		request = new Request();
 		request.put("idQuestion", idQuestion);
-		request.put("mode", mode);
+		request.put("mode", "READ");
 		MainDispatcher.getInstance().callAction("Question", "doControl", request);
 	}
 

@@ -3,6 +3,7 @@ package it.contrader.view;
 import java.util.List;
 
 import it.contrader.controller.Request;
+import it.contrader.dto.QuestionDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Question;
 
@@ -22,19 +23,21 @@ public class QuestionView extends AbstractView {
 		if (request !=null) {
 			
 			System.out.println("\"\\n--------- Gestionedomande del Quiz: ----------\n");
-			System.out.println("IDQuestion\tArgument\t\tText\t\tAnswer1\\t\\tAnswer2\\t\\tAnswer3 ");
+			System.out.println("IDQuestion\tArgument\t\tText\t\tAnswer1\t\tAnswer2\t\tAnswer3 ");
 			System.out.print("-------------------------------------------------------------\n");
 			
 			
-			List<Question> questions = (List<Question>) request.get("question");
+			List<QuestionDTO> questions = (List<QuestionDTO>) request.get("questions");
 			System.out.println();
 			
-			
-			for (Question x : questions) {
-				
-				System.out.println(x);
-				System.out.println();
+			if(questions != null && questions.size() > 0) {
+				for (QuestionDTO q : questions) {
+					
+					System.out.println(q);
+					System.out.println();
+				}
 			}
+			
 			
 		}
 	
@@ -56,7 +59,7 @@ public class QuestionView extends AbstractView {
 		request = new Request();
 		request.put("choice", choice);
 		request.put("mode", "GETCHOICE");
-		MainDispatcher.getInstance().callAction("Questin", "doControl", this.request);
+		MainDispatcher.getInstance().callAction("Question", "doControl", this.request);
 		
 	}
 

@@ -64,6 +64,7 @@ public class QuestionDAO implements DAO<Question>{
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 

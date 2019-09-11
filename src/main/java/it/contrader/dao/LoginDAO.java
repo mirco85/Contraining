@@ -29,11 +29,11 @@ public class LoginDAO {
 
 			String usertype = null;
 			
-			ResultSet resultSet;
+			ResultSet resultSet = statement.executeQuery();
 			
-			if(statement.executeQuery().next()) {
-				resultSet = statement.executeQuery();
-				resultSet.next();
+			if(resultSet.next()) {
+				//resultSet = statement.executeQuery();
+				//resultSet.next();
 				usertype = resultSet.getString("usertype");
 			}
 

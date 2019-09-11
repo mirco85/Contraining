@@ -33,8 +33,9 @@ public class QuestionConverter implements Converter<Question, QuestionDTO> {
 		if (questionDTO != null) {
 			question.setId(questionDTO.getId());
 			question.setArgument(questionDTO.getArgument());
+			question.setText(questionDTO.getText());
 			question.setAnswer1(questionDTO.getAnswer1());
-			question.setAnswer2(questionDTO.getAnswer3());
+			question.setAnswer2(questionDTO.getAnswer2());
 			question.setAnswer3(questionDTO.getAnswer3());
 		}
 		return question;
