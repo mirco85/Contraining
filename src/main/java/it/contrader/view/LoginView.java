@@ -12,7 +12,7 @@ public class LoginView extends AbstractView {
 	public void showResults(Request request) {
 		if(request != null) {
 			Boolean unknownCredentials = (Boolean)request.get("unknownCredentials");
-			if(unknownCredentials) 
+			if(unknownCredentials != null && unknownCredentials) 
 				System.out.println("Le credenziali sono errate.\n");
 		}
 	}

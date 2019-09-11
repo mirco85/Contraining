@@ -25,7 +25,7 @@ public class HomeController implements Controller {
 			String password = request.get("password").toString();
 
 			// Qui invoca il Login Service
-			String usertype = null;
+			String usertype = "";
 			try {
 				usertype= loginService.login(username, password);
 			} catch(CredentialsException ce) {
