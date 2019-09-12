@@ -33,7 +33,7 @@ public class AnswerReadView extends AbstractView
 	{
 		if (request != null) 
 		{
-			AnswersDTO answer = (AnswersDTO) request.get("Answer");
+			AnswersDTO answer = (AnswersDTO) request.get("answers");
 			System.out.println(answer);
 			MainDispatcher.getInstance().callView("Answer", null);
 		}
@@ -46,7 +46,7 @@ public class AnswerReadView extends AbstractView
 	@Override
 	public void showOptions() 
 	{
-		System.out.println("Inserisci l'ID dell'utente:");
+		System.out.println("Inserisci l'ID della risposta:");
 		id = Integer.parseInt(getInput());
 	}
 
@@ -59,6 +59,6 @@ public class AnswerReadView extends AbstractView
 		request = new Request();
 		request.put("id", id);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("Answer", "doControl", request);
+		MainDispatcher.getInstance().callAction("Answers", "doControl", request);
 	}
 }
