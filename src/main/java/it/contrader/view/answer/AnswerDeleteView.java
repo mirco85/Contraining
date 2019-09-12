@@ -33,9 +33,8 @@ public class AnswerDeleteView extends AbstractView
 	@Override
 	public void showOptions() 
 	{
-			System.out.println("Inserisci id dell'utente:");
-			id = Integer.parseInt(getInput());
-
+		System.out.println("Inserisci id della risposta:");
+		id = Integer.parseInt(getInput());
 	}
 
 	/**
@@ -47,7 +46,7 @@ public class AnswerDeleteView extends AbstractView
 		request = new Request();
 		request.put("id", id);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("Answer", "doControl", request);
+		MainDispatcher.getInstance().callAction("Answers", "doControl", request);
 	}
 
 	

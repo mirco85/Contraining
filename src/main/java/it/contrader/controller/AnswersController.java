@@ -70,7 +70,7 @@ public class AnswersController implements Controller {
 			answersservice.update(answertoupdate);
 			request = new Request();
 			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView("Answer", request);
+			MainDispatcher.getInstance().callView(sub_package + "AnswerUpdate", request);
 			break;
 			
 		case "ANSWERLIST":
