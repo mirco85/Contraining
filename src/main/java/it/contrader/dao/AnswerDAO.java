@@ -101,6 +101,7 @@ public class AnswerDAO implements DAO<Answer>
 				pStatement.setInt(1,  dto.getIduser());
 				pStatement.setInt(2,  dto.getIdquestion());
 				pStatement.setInt(3,  dto.getAnswer());
+				pStatement.setInt(4, dto.getId());
 				
 				int updateResult = pStatement.executeUpdate();
 				return updateResult > 0;

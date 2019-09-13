@@ -36,6 +36,8 @@ public class AnswerUpdateView extends AbstractView
 	{
 		try 
 		{
+			System.out.println("Inserisci id della risposta:");
+			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci id dell'utente:");
 			iduser = Integer.parseInt(getInput());
 			System.out.println("Inserisci l'id della domanda:");
