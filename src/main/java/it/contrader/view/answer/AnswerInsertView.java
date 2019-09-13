@@ -41,7 +41,7 @@ public class AnswerInsertView extends AbstractView
 			iduser = Integer.parseInt(getInput());
 			System.out.println("Inserisci l'id della domanda:");
 			idquestion = Integer.parseInt(getInput());
-			System.out.println("Inserisci la risposta:");
+			System.out.println("Inserisci la posizione della risposta correta:");
 			answer = Integer.parseInt(getInput());
 	}
 

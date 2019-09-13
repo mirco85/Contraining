@@ -61,7 +61,7 @@ public class AnswerUpdateView extends AbstractView
 		request.put("idquestion", idquestion);
 		request.put("answer", answer);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("Answer", "doControl", request);
+		MainDispatcher.getInstance().callAction("Answers", "doControl", request);
 	}
 
 
