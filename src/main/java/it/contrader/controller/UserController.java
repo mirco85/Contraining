@@ -139,6 +139,13 @@ public class UserController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
+
+			case "U":
+				List<UserDTO> usersDTO2 = userService.getAll();
+				//Impacchetta la request con la lista degi user
+				request.put("users", usersDTO2);
+				MainDispatcher.getInstance().callView("User", request);
+				break;
 				
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
