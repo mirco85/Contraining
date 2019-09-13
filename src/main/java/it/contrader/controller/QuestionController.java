@@ -76,6 +76,12 @@ public class QuestionController implements Controller {
 			
 		case "GETCHOICE":
 			switch(choice.toUpperCase()) {
+			
+			case "S":
+				List<QuestionDTO> questionDTO2 = questionService.getAll();
+				request.put("questions", questionDTO2);
+				MainDispatcher.getInstance().callView("Question", request);
+				break;
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package + "QuestionRead", null);
 				break;
