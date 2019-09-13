@@ -50,7 +50,7 @@ public class AnswerView extends AbstractView
 	public void showOptions() 
 	{
 		System.out.println("          Scegli l'operazione da effettuare:");
-		System.out.println("[L]eggi [I]nserisci [M]odifica [C]ancella [B]ack [E]sci");
+		System.out.println("Stampa [A]nswer [L]eggi [I]nserisci [M]odifica [C]ancella [B]ack [E]sci");
 
 		this.choice = getInput();
 	

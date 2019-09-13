@@ -83,6 +83,12 @@ public class AnswersController implements Controller {
 			
 			switch (choice.toUpperCase()) {
 			
+			case "A":
+				List<AnswersDTO> answerDTO2 = answersservice.getAll();
+				request.put("answers", answerDTO2);
+				MainDispatcher.getInstance().callView("Answer", request);
+				break;
+			
 			case "L":
 				MainDispatcher.getInstance().callView(sub_package  + "AnswerRead",null );
 				break;
