@@ -7,6 +7,7 @@
 </head>
 <body>
 
+	<div class="loginContainer">
 		<form class="login" action="LoginServlet" method="post">
 
 				<label for="user">Username: </label>
@@ -24,11 +25,11 @@
 			Object loginError = session.getAttribute("credentialsError");
 			if(loginError != null && ((Boolean)loginError))	{
 				%>
-				<p>Username o password errati.</p>
+				<p class="loginError">Username o password errati.</p>
 				<%
 			}
 		%>
-
+	</div>
 	
 </body>
 </html>
