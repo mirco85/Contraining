@@ -20,6 +20,15 @@
 			<button type="submit" value="Login" name="pulsante">Login</button>
 		</form>
 
+		<%
+			Object loginError = session.getAttribute("credentialsError");
+			if(loginError != null && ((Boolean)loginError))	{
+				%>
+				<p>Username o password errati.</p>
+				<%
+			}
+		%>
+
 	
 </body>
 </html>

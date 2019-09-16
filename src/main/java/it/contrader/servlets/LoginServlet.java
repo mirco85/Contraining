@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import it.contrader.dao.login.CredentialsException;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.LoginService;
 
@@ -25,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
-		session.setAttribute("utente", null);
+		session.setAttribute("user", null);
 
 		LoginService service = new LoginService();
 
@@ -33,13 +35,20 @@ public class LoginServlet extends HttpServlet {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
 			//come nei vecchi controller, invoca il service
-			UserDTO dto = service.login(username, password);
-			if (dto != null)
+			UserDTO dto = null;
+			try {
+				dto = service.login(username, password);
+			} catch(CredentialsException cex) {
+				session.setAttribute("credentialsError", true);
+			}
+			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
-			else
+			} else {
 				//altrimenti torna alla pagina di login
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				return;
+			}
 			
 			//esegue una switch cae in base allo usertype per il reindirizzamento
 			switch (dto.getUsertype().toUpperCase()) {
