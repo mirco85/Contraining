@@ -27,11 +27,6 @@
 				%>
 				<p class="loginError">Username o password errati.</p>
 				<%
-			} else {
-				if(loginError == null)
-					System.out.println("loginError is null");
-				else
-					System.out.println(loginError);
 			}
 		%>
 	</div>

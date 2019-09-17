@@ -9,11 +9,8 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<div class="navbar">
-  <a href="homeadmin.jsp">Home</a>
-  <a class="active" href="AnswerServlet?mode=answerlist">Answers</a>
-  <a href="LogoutServlet" id="logout">Logout</a>
-</div>
+<%@ include file="../menu/menu.jsp" %>
+
 <br>
 <div class="main">
 
@@ -28,7 +25,7 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="idquestion" name="Idquestion" value=<%=a.getIdquestion()%>> 
+			type="text" id="idquestion" name="idquestion" value=<%=a.getIdquestion()%>> 
     </div>
   </div>
   <div class="row">

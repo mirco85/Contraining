@@ -41,7 +41,7 @@ public class AnswerServlet extends HttpServlet
 
 		case "ANSWERLIST":
 			updateList(request);
-			getServletContext().getRequestDispatcher("/answer/answermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/answers/answermanager.jsp").forward(request, response);
 			break;
 
 		case "READ":
@@ -50,11 +50,11 @@ public class AnswerServlet extends HttpServlet
 			request.setAttribute("dto", dto);
 			
 			if (request.getParameter("update") == null) {
-				 getServletContext().getRequestDispatcher("/answer/readanswer.jsp").forward(request, response);
+				 getServletContext().getRequestDispatcher("/answers/readanswer.jsp").forward(request, response);
 				
 			}
 			
-			else getServletContext().getRequestDispatcher("/answer/updateanswer.jsp").forward(request, response);
+			else getServletContext().getRequestDispatcher("/answers/updateanswer.jsp").forward(request, response);
 			
 			break;
 
@@ -66,7 +66,7 @@ public class AnswerServlet extends HttpServlet
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/answer/answermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/answers/answermanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
@@ -77,7 +77,7 @@ public class AnswerServlet extends HttpServlet
 			dto = new AnswersDTO (id,iduser, idquestion, answer);
 			ans = service.update(dto);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/answer/answermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/answers/answermanager.jsp").forward(request, response);
 			break;
 
 		case "DELETE":
@@ -85,7 +85,7 @@ public class AnswerServlet extends HttpServlet
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/answer/answermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/answers/answermanager.jsp").forward(request, response);
 			break;
 		}
 	}
