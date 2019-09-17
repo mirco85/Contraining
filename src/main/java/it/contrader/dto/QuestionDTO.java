@@ -12,7 +12,7 @@ package it.contrader.dto;
 public class QuestionDTO 
 {
 	private int id;
-	private int idargument;
+	private String argument;
 	private String text;
 	private String answer1;
 	private String answer2;
@@ -20,18 +20,18 @@ public class QuestionDTO
 	
 	public QuestionDTO() {	
 	}
-	public QuestionDTO (int id, int idargument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO (int id, String argument, String text, String answer1, String answer2, String answer3)
 	{
 		this.id = id;
-		this.idargument = idargument;
+		this.argument = argument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 	}
-	public QuestionDTO (int idargument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO ( String argument, String text, String answer1, String answer2, String answer3)
 	{
-		this.idargument = idargument;
+		this.argument = argument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
@@ -45,13 +45,13 @@ public class QuestionDTO
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdArgument() {
-		return idargument;
+	public String getArgument() {
+		return argument;
 	}
-	public void setIdArgument(int idargument) {
-		this.idargument = idargument;
+	public void setArgument(String argument) {
+		this.argument = argument;
 	}
-	public String getText() {
+	public  String getText() {
 		return text;
 	}
 	public void setText(String text) {
@@ -80,7 +80,7 @@ public class QuestionDTO
 		StringBuilder sb = new StringBuilder();
 		String tab = "\t";
 		sb.append(id).append(tab)
-			.append(idargument).append(tab)
+			.append(argument).append(tab)
 			.append(text).append(tab)
 			.append(answer1).append(tab)
 			.append(answer2).append(tab)

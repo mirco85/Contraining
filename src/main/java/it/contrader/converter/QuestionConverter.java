@@ -16,7 +16,7 @@ public class QuestionConverter  {
 		QuestionDTO questionDTO = new QuestionDTO();
 		if (question != null) {
 			questionDTO.setId(question.getId());
-			questionDTO.setIdArgument(question.getIdArgument());
+			questionDTO.setArgument(question.getArgument());
 			questionDTO.setText(question.getText());
 			questionDTO.setAnswer1(question.getAnswer1());
 			questionDTO.setAnswer2(question.getAnswer2());
@@ -25,14 +25,14 @@ public class QuestionConverter  {
 			
 		}
 		return questionDTO;	
-		
-	}
+	}		
+	
 	
 	public Question toEntity(QuestionDTO questionDTO) {
 		Question question = new Question();
 		if (questionDTO != null) {
 			question.setId(questionDTO.getId());
-			question.setIdArgument(questionDTO.getIdArgument());
+			question.setArgument(questionDTO.getArgument());
 			question.setText(questionDTO.getText());
 			question.setAnswer1(questionDTO.getAnswer1());
 			question.setAnswer2(questionDTO.getAnswer2());

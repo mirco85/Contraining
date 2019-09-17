@@ -14,7 +14,7 @@ import it.contrader.utils.ConnectionSingleton;
 public class QuestionDAO implements DAO<Question>{
 	
 	
-	private final String QUERY_ALL = "SELECT * FROM questions";
+	private final String QUERY_ALL = "select questions.id,argument,text,answer1,answer2,answer3 from Questions JOIN Category on questions.idargument=category.id";
 	private final String QUERY_CREATE = "INSERT INTO questions (argument, text, answer1,answer2,answer3) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM questions WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE questions SET argument=?, text=?, answer1=?,answer2=?,answer3=? WHERE id=?";
@@ -34,13 +34,13 @@ public class QuestionDAO implements DAO<Question>{
 			Question question;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				int idargument = resultSet.getInt("idargument");
+				String argument = resultSet.getString("argument");
 				String text = resultSet.getString("text");
 				String answer1 = resultSet.getString("answer1");
 				String answer2 = resultSet.getString("answer2");
 				String answer3 = resultSet.getString("answer3");
 				
-				question = new Question(idargument,text, answer1, answer2,answer3);
+				question = new Question(argument,text, answer1, answer2,answer3);
 				question.setId(id);
 				questionsList.add(question);
 			}
@@ -55,7 +55,7 @@ public class QuestionDAO implements DAO<Question>{
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setInt(1, questionsToInsert.getIdArgument());
+			preparedStatement.setString(1, questionsToInsert.getArgument());
 			preparedStatement.setString(2, questionsToInsert.getText());
 			preparedStatement.setString(3, questionsToInsert.getAnswer1());
 			preparedStatement.setString(4, questionsToInsert.getAnswer2());
@@ -78,15 +78,15 @@ public class QuestionDAO implements DAO<Question>{
 			preparedStatement.setInt(1, questionId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			int idargument;
-			String text, answer1,answer2,answer3;
+			
+			String argument,text, answer1,answer2,answer3;
 
-			idargument = resultSet.getInt("idargument");
+			argument = resultSet.getString("argument");
 			text = resultSet.getString("text");
 			answer1 = resultSet.getString("answer1");
 			answer2 = resultSet.getString("answer2");
 			answer3 = resultSet.getString("answer3");
-			Question question = new Question(idargument,text, answer1,answer2,answer3);
+			Question question = new Question(argument,text, answer1,answer2,answer3);
 			question.setId(resultSet.getInt("id"));
 			
 			
@@ -108,8 +108,8 @@ public class QuestionDAO implements DAO<Question>{
 		if (!questionRead.equals(questionsToUpdate)) {
 			try {
 				
-				if (questionsToUpdate.getIdArgument() == 0) {
-					questionsToUpdate.setIdArgument(questionRead.getIdArgument());
+				if (questionsToUpdate.getArgument() == null || questionsToUpdate.getArgument().equals("")) {
+					questionsToUpdate.setArgument(questionRead.getArgument());
 				}
 
 				if (questionsToUpdate.getText() == null || questionsToUpdate.getText().equals("")) {
@@ -131,7 +131,7 @@ public class QuestionDAO implements DAO<Question>{
 
 				
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setInt(1, questionsToUpdate.getIdArgument());
+				preparedStatement.setString(1, questionsToUpdate.getArgument());
 				preparedStatement.setString(2, questionsToUpdate.getText());
 				preparedStatement.setString(3, questionsToUpdate.getAnswer1());
 				preparedStatement.setString(4, questionsToUpdate.getAnswer2());
