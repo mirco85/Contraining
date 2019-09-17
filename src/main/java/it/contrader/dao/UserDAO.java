@@ -34,10 +34,14 @@ public class UserDAO implements DAO<User> {
 			User user;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
+				String datanascita = resultSet.getString("datanascita");
+				String firstname = resultSet.getString("firstname");
+				String lastname = resultSet.getString("lastname");
 				String username = resultSet.getString("username");
 				String password = resultSet.getString("password");
 				String usertype = resultSet.getString("usertype");
-				user = new User(username, password, usertype);
+				String codicefiscale = resultSet.getString("codicefiscale");
+				user = new User(datanascita, firstname, lastname, username, password, usertype, codicefiscale);
 				user.setId(id);
 				usersList.add(user);
 			}
@@ -51,9 +55,13 @@ public class UserDAO implements DAO<User> {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(1, userToInsert.getUsername());
-			preparedStatement.setString(2, userToInsert.getPassword());
-			preparedStatement.setString(3, userToInsert.getUsertype());
+			preparedStatement.setString(1, userToInsert.getDatanascita());
+			preparedStatement.setString(2, userToInsert.getFirstname());
+			preparedStatement.setString(3, userToInsert.getLastname());
+			preparedStatement.setString(4, userToInsert.getUsername());
+			preparedStatement.setString(5, userToInsert.getPassword());
+			preparedStatement.setString(6, userToInsert.getUsertype());
+			preparedStatement.setString(7, userToInsert.getCodicefiscale());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -71,12 +79,16 @@ public class UserDAO implements DAO<User> {
 			preparedStatement.setInt(1, userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String username, password, usertype;
+			String firstname,lastname,username, password, usertype,codicefiscale,datanascita;
 
+			datanascita = resultSet.getString("datanascita");
+			firstname = resultSet.getString("firstname");
+			lastname = resultSet.getString("lastname");
 			username = resultSet.getString("username");
 			password = resultSet.getString("password");
 			usertype = resultSet.getString("usertype");
-			User user = new User(username, password, usertype);
+			codicefiscale = resultSet.getString("codicefiscale");
+			User user = new User(datanascita, firstname, lastname, username, password, usertype, codicefiscale);
 			user.setId(resultSet.getInt("id"));
 
 			return user;
@@ -97,6 +109,18 @@ public class UserDAO implements DAO<User> {
 		if (!userRead.equals(userToUpdate)) {
 			try {
 				// Fill the userToUpdate object
+				if (userToUpdate.getDatanascita() == null || userToUpdate.getDatanascita().equals("")) {
+					userToUpdate.setDatanascita(userRead.getDatanascita());
+				}
+				
+				if (userToUpdate.getFirstname() == null || userToUpdate.getFirstname().equals("")) {
+					userToUpdate.setFirstname(userRead.getFirstname());
+				}
+				
+				if (userToUpdate.getLastname() == null || userToUpdate.getLastname().equals("")) {
+					userToUpdate.setLastname(userRead.getLastname());
+				}
+				
 				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
 					userToUpdate.setUsername(userRead.getUsername());
 				}
@@ -108,13 +132,21 @@ public class UserDAO implements DAO<User> {
 				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
 					userToUpdate.setUsertype(userRead.getUsertype());
 				}
+				
+				if (userToUpdate.getCodicefiscale() == null || userToUpdate.getCodicefiscale().equals("")) {
+					userToUpdate.setCodicefiscale(userRead.getCodicefiscale());
+				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, userToUpdate.getUsername());
-				preparedStatement.setString(2, userToUpdate.getPassword());
-				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getId());
+				preparedStatement.setString(1, userToUpdate.getDatanascita());
+				preparedStatement.setString(2, userToUpdate.getFirstname());
+				preparedStatement.setString(3, userToUpdate.getLastname());
+				preparedStatement.setString(4, userToUpdate.getUsername());
+				preparedStatement.setString(5, userToUpdate.getPassword());
+				preparedStatement.setString(6, userToUpdate.getUsertype());
+				preparedStatement.setString(7, userToUpdate.getCodicefiscale());
+				preparedStatement.setInt(8, userToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

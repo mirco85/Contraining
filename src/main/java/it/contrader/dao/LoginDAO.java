@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.contrader.utils.ConnectionSingleton;
+import it.contrader.utils.ConverterDate;
 import it.contrader.dao.login.CredentialsException;
 import it.contrader.model.User;
 
@@ -37,9 +38,14 @@ public class LoginDAO {
 			if(statement.executeQuery().next()) {
 				resultSet = statement.executeQuery();
 				resultSet.next();
+				String datanascita, firstname, lastname, codicefiscale;
 				String usertype = resultSet.getString("usertype");
+				firstname = resultSet.getString("firstname");
+				lastname = resultSet.getString("lastname");
+				codicefiscale = resultSet.getString("codicefiscale");
+				datanascita = ConverterDate.dateToString(resultSet.getDate("datanascita"));
 				int id = resultSet.getInt("id");
-				User user = new User(id, username, password, usertype);
+				User user = new User(id, datanascita, firstname, lastname, username, password, usertype, codicefiscale);
 				
 				return user;
 			} else {

@@ -1,5 +1,7 @@
 package it.contrader.dto;
 
+import java.sql.Date;
+
 /**
  * 
  * @author Vittorio
@@ -12,29 +14,45 @@ package it.contrader.dto;
 public class UserDTO {
 	
 	private int id;
+	
+	private String datanascita;
+	
+	private String firstname;
+	
+	private String lastname;
 
 	private String username;
 	
 	private String password;
 	
 	private String usertype;
+	
+	private String codicefiscale;
 
 	
 	public UserDTO() {
 		
 	}
 
-	public UserDTO (String username, String password, String usertype) {
+	public UserDTO (String datanascita, String firstname, String lastname, String username, String password, String usertype, String codicefiscale) {
+		this.setDatanascita(datanascita);
+		this.setFirstname(firstname);
+		this.setLastname(lastname);
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
+		this.setCodicefiscale(codicefiscale);		
 	}
 
-	public UserDTO (int id, String username, String password, String usertype) {
+	public UserDTO (int id, String datanascita, String firstname, String lastname, String username, String password, String usertype, String codicefiscale) {
 		this.id = id;
+		this.setDatanascita(datanascita);
+		this.setFirstname(firstname);
+		this.setLastname(lastname);
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
+		this.setCodicefiscale(codicefiscale);	
 	}
 
 	public int getId() {
@@ -72,5 +90,37 @@ public class UserDTO {
 	@Override
 	public String toString() {
 		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
+	}
+
+	public String getDatanascita() {
+		return datanascita;
+	}
+
+	public void setDatanascita(String datanascita) {
+		this.datanascita = datanascita;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getCodicefiscale() {
+		return codicefiscale;
+	}
+
+	public void setCodicefiscale(String codicefiscale) {
+		this.codicefiscale = codicefiscale;
 	}
 }

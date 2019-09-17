@@ -1,6 +1,7 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -56,10 +57,14 @@ public class UserServlet extends HttpServlet {
 			break;
 
 		case "INSERT":
+			String datanascita = request.getParameter("datanascita").toString();
+			String firstname = request.getParameter("firstname").toString();
+			String lastname = request.getParameter("lastname").toString();
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
 			String usertype = request.getParameter("usertype").toString();
-			dto = new UserDTO (username,password,usertype);
+			String codicefiscale = request.getParameter("codicefiscale").toString();
+			dto = new UserDTO (datanascita,firstname,lastname,username,password,usertype,codicefiscale);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
@@ -67,11 +72,15 @@ public class UserServlet extends HttpServlet {
 			break;
 			
 		case "UPDATE":
+			datanascita = request.getParameter("datanascita");
+			firstname = request.getParameter("firstname");
+			lastname = request.getParameter("lastname");
 			username = request.getParameter("username");
 			password = request.getParameter("password");
 			usertype = request.getParameter("usertype");
+			codicefiscale = request.getParameter("codicefiscale");
 			id = Integer.parseInt(request.getParameter("id"));
-			dto = new UserDTO (id,username, password, usertype);
+			dto = new UserDTO (id,datanascita,firstname,lastname,username,password,usertype,codicefiscale);
 			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
