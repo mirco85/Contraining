@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 			try {
 				dto = service.login(username, password);
 			} catch(CredentialsException cex) {
-				session.setAttribute("credentialsError", true);
+				request.setAttribute("credentialsError", true);
 			}
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione

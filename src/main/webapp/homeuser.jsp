@@ -11,12 +11,7 @@
 </head>
 <body>
 <%@include file="css/header.jsp"%>
-
-<div class="navbar">
-  <a class="active" href="homeuser.jsp">Home</a>
- 
-  <a href="LogoutServlet" id="logout">Logout</a>
-   </div>
+<%@ include file="menu/menu.jsp" %>
   <div class="main">
 <h1>Welcome ${user.getUsername()}</h1>
 
