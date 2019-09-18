@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import it.contrader.dto.AnswersDTO;
+import it.contrader.dto.QuestionDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.AnswersService;
+import it.contrader.service.QuestionService;
+import it.contrader.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,9 +56,13 @@ public class AnswerServlet extends HttpServlet
 			if (request.getParameter("update") == null) {
 				 getServletContext().getRequestDispatcher("/answers/readanswer.jsp").forward(request, response);
 				
+			} else {
+				List<UserDTO> users = (new UserService()).getAll();
+				List<QuestionDTO> questions = (new QuestionService()).getAll();
+				request.setAttribute("users", users);
+				request.setAttribute("questions", questions);
+				getServletContext().getRequestDispatcher("/answers/updateanswer.jsp").forward(request, response);
 			}
-			
-			else getServletContext().getRequestDispatcher("/answers/updateanswer.jsp").forward(request, response);
 			
 			break;
 

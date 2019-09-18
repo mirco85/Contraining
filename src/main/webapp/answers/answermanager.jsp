@@ -21,8 +21,8 @@
 	<table>
 		<tr>
 			<th>id</th>
-			<th>id question</th>
-			<th>id utente</th>
+			<th>Question</th>
+			<th>Username</th>
 			<th>Answer</th>
 			<th></th>
 			<th></th>
@@ -35,8 +35,8 @@
 			<td><a href=AnswerServlet?mode=read&id=<%=a.getId()%>>
 					<%=a.getId()%>
 			</a></td>
-			<td><%=a.getIdquestion()%></td>
-			<td><%=a.getIduser()%></td>
+			<td><%=a.getQuestiontext()%></td>
+			<td><%=a.getUsername()%></td>
 			<td><%=a.getAnswer()%></td>
 			<td><a href=AnswerServlet?mode=read&update=true&id=<%=a.getId()%>>Edit</a>
 			</td>
