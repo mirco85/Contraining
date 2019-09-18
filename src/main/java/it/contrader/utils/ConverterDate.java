@@ -6,24 +6,26 @@ import java.text.SimpleDateFormat;
 
 public class ConverterDate {
 	/**
-	 * Converte un tipo Date da database in stringa nel formato dd/mm/yyyy
+	 * Converte un tipo Date da database in stringa nel formato dd/MM/yyyy
 	 * @param d
 	 * @return
 	 */
 	public static String dateToString(Date d) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-		return sdf.format(d);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String f = sdf.format(d);
+		System.out.println(f);
+		return f;
 	}
 	
 	/**
-	 * Prende una stringa data nel formato leggibile dd/mm/yyyy e lo traduce in stringa nel formato ISO
-	 * Sql nel formato yyyy-mm-dd
+	 * Prende una stringa data nel formato leggibile dd/MM/yyyy e lo traduce in stringa nel formato ISO
+	 * Sql nel formato yyyy-MM-dd
 	 * @param dateString
 	 * @return
 	 */
 	public static String toDateString(String dateString) {
-		SimpleDateFormat fromModel = new SimpleDateFormat("dd/mm/yyyy");
-		SimpleDateFormat toSQL = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat fromModel = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat toSQL = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String sqlDateString = "2000-01-01";
 		try {

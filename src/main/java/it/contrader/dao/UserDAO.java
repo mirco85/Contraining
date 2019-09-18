@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.utils.ConnectionSingleton;
+import it.contrader.utils.ConverterDate;
 import it.contrader.model.User;
 
 /**
@@ -16,9 +17,9 @@ import it.contrader.model.User;
 public class UserDAO implements DAO<User> {
 
 	private final String QUERY_ALL = "SELECT * FROM user";
-	private final String QUERY_CREATE = "INSERT INTO user (username, password, usertype) VALUES (?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO user (datanascita, firstname, lastname, username, password, usertype, codicefiscale) VALUES (?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM user WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE user SET datanascita=?, firstname=?, lastname=?, username=?, password=?, usertype=?, codicefiscale=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
 
 	public UserDAO() {
@@ -34,7 +35,7 @@ public class UserDAO implements DAO<User> {
 			User user;
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
-				String datanascita = resultSet.getString("datanascita");
+				String datanascita = ConverterDate.dateToString(resultSet.getDate("datanascita"));
 				String firstname = resultSet.getString("firstname");
 				String lastname = resultSet.getString("lastname");
 				String username = resultSet.getString("username");
@@ -55,7 +56,7 @@ public class UserDAO implements DAO<User> {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(1, userToInsert.getDatanascita());
+			preparedStatement.setString(1, ConverterDate.toDateString(userToInsert.getDatanascita()));
 			preparedStatement.setString(2, userToInsert.getFirstname());
 			preparedStatement.setString(3, userToInsert.getLastname());
 			preparedStatement.setString(4, userToInsert.getUsername());
@@ -65,6 +66,7 @@ public class UserDAO implements DAO<User> {
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 
@@ -81,7 +83,7 @@ public class UserDAO implements DAO<User> {
 			resultSet.next();
 			String firstname,lastname,username, password, usertype,codicefiscale,datanascita;
 
-			datanascita = resultSet.getString("datanascita");
+			datanascita = ConverterDate.dateToString(resultSet.getDate("datanascita"));
 			firstname = resultSet.getString("firstname");
 			lastname = resultSet.getString("lastname");
 			username = resultSet.getString("username");
@@ -139,7 +141,7 @@ public class UserDAO implements DAO<User> {
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, userToUpdate.getDatanascita());
+				preparedStatement.setString(1, ConverterDate.toDateString(userToUpdate.getDatanascita()));
 				preparedStatement.setString(2, userToUpdate.getFirstname());
 				preparedStatement.setString(3, userToUpdate.getLastname());
 				preparedStatement.setString(4, userToUpdate.getUsername());
