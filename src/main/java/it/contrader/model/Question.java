@@ -86,8 +86,6 @@ public class Question {
 	}
 		
 	
-	
-	
 	public String toString() {
 		return id + "\t" + idargument + "\t\t" + argument + "\t\t" + text + "\t\t" + answer1 + "\t\t" + answer2 + "\t\t" + answer3;
 	}

@@ -14,10 +14,10 @@ import it.contrader.utils.ConnectionSingleton;
 public class QuestionDAO implements DAO<Question>{
 	
 	
-	private final String QUERY_ALL = "select questions.id,argument,text,answer1,answer2,answer3 from Questions JOIN Category on questions.idargument=category.id";
-	private final String QUERY_CREATE = "INSERT INTO questions (argument, text, answer1,answer2,answer3) VALUES (?,?,?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM questions WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE questions SET argument=?, text=?, answer1=?,answer2=?,answer3=? WHERE id=?";
+	private final String QUERY_ALL = "select questions.id,argument,idargument,text,answer1,answer2,answer3 from Questions JOIN Category on questions.idargument=category.id";
+	private final String QUERY_CREATE = "INSERT INTO questions (idargument, text, answer1,answer2,answer3) VALUES (?,?,?,?,?)";
+	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3 FROM Questions JOIN Category on questions.idargument=category.id WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE questions SET idargument=?, text=?, answer1=?,answer2=?,answer3=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM questions WHERE id=?";
 	
 	
@@ -35,13 +35,15 @@ public class QuestionDAO implements DAO<Question>{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String argument = resultSet.getString("argument");
+				int idargument = resultSet.getInt("idargument");
 				String text = resultSet.getString("text");
 				String answer1 = resultSet.getString("answer1");
 				String answer2 = resultSet.getString("answer2");
 				String answer3 = resultSet.getString("answer3");
 				
-				question = new Question(argument,text, answer1, answer2,answer3);
+				question = new Question(idargument,text, answer1, answer2,answer3);
 				question.setId(id);
+				question.setArgument(argument);
 				questionsList.add(question);
 			}
 		} catch (SQLException e) {
@@ -80,14 +82,18 @@ public class QuestionDAO implements DAO<Question>{
 			resultSet.next();
 			
 			String argument,text, answer1,answer2,answer3;
+            
+			int idargument;
 
 			argument = resultSet.getString("argument");
+			idargument = resultSet.getInt("idargument");
 			text = resultSet.getString("text");
 			answer1 = resultSet.getString("answer1");
 			answer2 = resultSet.getString("answer2");
 			answer3 = resultSet.getString("answer3");
-			Question question = new Question(argument,text, answer1,answer2,answer3);
+			Question question = new Question(idargument,text, answer1,answer2,answer3);
 			question.setId(resultSet.getInt("id"));
+			question.setArgument(argument);
 			
 			
 			return question;
