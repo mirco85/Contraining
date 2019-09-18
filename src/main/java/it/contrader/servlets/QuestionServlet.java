@@ -54,7 +54,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 break;
 	 
  case "INSERT":
-	 String idargument = request.getParameter("idargument").toString();
+	 int idargument = Integer.parseInt(request.getParameter("idargument").toString());
 	 String text = request.getParameter("text").toString();
 	 String answer1 = request.getParameter("answer1").toString();
 	 String answer2 = request.getParameter("answer2").toString();
@@ -67,7 +67,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 break;
 	 
  case "UPDATE":
-	 idargument = request.getParameter("idargument");
+	 idargument = Integer.parseInt(request.getParameter("idargument"));
 	 text = request.getParameter("text");
 	 answer1 = request.getParameter("answer1");
 	 answer2 = request.getParameter("answer2");
