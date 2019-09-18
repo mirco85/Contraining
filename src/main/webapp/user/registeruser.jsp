@@ -24,12 +24,12 @@
 				<!-- Campo username -->
 				<label for="user">Username: </label>
 				<input type="text" id="user" name="username" placeholder="Insert username">
-		
 				<!-- Campo password -->
 				<label for="pass">Password: </label>
 				 <input type="password" id="pass" name="password" placeholder="Insert password">
 		
-			<button type="submit" value="Login" name="pulsante">Login</button>
+			<button type="submit" value="Login" name="pulsante">Registrati</button>
+			
 		</form>
 	</div>
 	
