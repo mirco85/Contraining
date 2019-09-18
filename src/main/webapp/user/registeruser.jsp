@@ -1,14 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
 <head>
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<meta charset="ISO-8859-1">
+<link href="css/vittoriostyle.css" rel="stylesheet">
 
 <title>Login SAMPLE</title>
 </head>
 <body>
 
 	<div class="loginContainer">
-		<form class="login" action="UserServlet?mode=register" method="post">
+		<form class="register" action="UserServlet?mode=register" method="post">
 				<!-- Campo nome -->
 				<label for="firstname">Nome: </label>
 				<input type="text" id="firstname" name="firstname" placeholder="Insert firstname">

@@ -80,8 +80,17 @@ div.loginContainer {
 .login{
 	position: relative;
 	heigth:50%;
-	width:20%;
+	width: 20%;
 	z-index:1;
+}
+.register {
+	position: relative;
+	heigth:50%;
+	width: 40%;
+	padding: 3vh;
+	box-sizing: content-box;
+	z-index:1;
+	
 }
 
 .login input {
