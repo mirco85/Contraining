@@ -57,7 +57,7 @@ public class QuestionDAO implements DAO<Question>{
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(1, questionsToInsert.getArgument());
+			preparedStatement.setInt(1, questionsToInsert.getIdargument());
 			preparedStatement.setString(2, questionsToInsert.getText());
 			preparedStatement.setString(3, questionsToInsert.getAnswer1());
 			preparedStatement.setString(4, questionsToInsert.getAnswer2());
@@ -114,8 +114,8 @@ public class QuestionDAO implements DAO<Question>{
 		if (!questionRead.equals(questionsToUpdate)) {
 			try {
 				
-				if (questionsToUpdate.getArgument() == null || questionsToUpdate.getArgument().equals("")) {
-					questionsToUpdate.setArgument(questionRead.getArgument());
+				if (questionsToUpdate.getIdargument() == 0) {
+					questionsToUpdate.setIdargument(questionRead.getIdargument());
 				}
 
 				if (questionsToUpdate.getText() == null || questionsToUpdate.getText().equals("")) {
@@ -137,7 +137,7 @@ public class QuestionDAO implements DAO<Question>{
 
 				
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, questionsToUpdate.getArgument());
+				preparedStatement.setInt(1, questionsToUpdate.getIdargument());
 				preparedStatement.setString(2, questionsToUpdate.getText());
 				preparedStatement.setString(3, questionsToUpdate.getAnswer1());
 				preparedStatement.setString(4, questionsToUpdate.getAnswer2());
