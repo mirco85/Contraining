@@ -6,6 +6,8 @@ public class Question {
 	
 	private String argument;
 	
+	private int idargument;
+	
 	private String text;
 	
 	private String answer1;
@@ -19,18 +21,18 @@ public class Question {
 	public Question() { 
 }
 
-	public Question(String argument, String text, String answer1, String answer2, String answer3) {
-		this.argument =argument;
+	public Question(int idargument, String text, String answer1, String answer2, String answer3) {
+		this.idargument =idargument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 	}
 	
-	public Question (int id, String argument, String text, String answer1, String answer2, String answer3) {
+	public Question (int id, int idargument, String text, String answer1, String answer2, String answer3) {
 		
 		this.id = id;
-		this.argument = argument;
+		this.idargument = idargument;
 		this.text = text ;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
@@ -75,10 +77,19 @@ public class Question {
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
+	public int getIdargument() {
+		return this.idargument;
+	}
+	
+	public void setIdargument(int idargument) {
+		this.idargument = idargument;
+	}
+		
+	
 	
 	
 	public String toString() {
-		return id + "\t" + argument + "\t\t" + text + "\t\t" + answer1 + "\t\t" + answer2 + "\t\t" + answer3;
+		return id + "\t" + idargument + "\t\t" + argument + "\t\t" + text + "\t\t" + answer1 + "\t\t" + answer2 + "\t\t" + answer3;
 	}
 
 	

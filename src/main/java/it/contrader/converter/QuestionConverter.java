@@ -17,6 +17,7 @@ public class QuestionConverter  {
 		if (question != null) {
 			questionDTO.setId(question.getId());
 			questionDTO.setArgument(question.getArgument());
+			questionDTO.setIdargument(question.getIdargument());
 			questionDTO.setText(question.getText());
 			questionDTO.setAnswer1(question.getAnswer1());
 			questionDTO.setAnswer2(question.getAnswer2());
@@ -33,6 +34,7 @@ public class QuestionConverter  {
 		if (questionDTO != null) {
 			question.setId(questionDTO.getId());
 			question.setArgument(questionDTO.getArgument());
+			question.setIdargument(questionDTO.getIdargument());
 			question.setText(questionDTO.getText());
 			question.setAnswer1(questionDTO.getAnswer1());
 			question.setAnswer2(questionDTO.getAnswer2());
