@@ -45,6 +45,19 @@
 			}
 		%>
 	</table>
+	
+	<form id="floatright" action="CategoryServlet?mode=insert" method="post">
+	<div class="row">
+	    <div class="col-25">
+	      	<label for="argument">Argument</label>
+	    </div>
+	    <div class="col-75">
+	      	<input type="text" id="argument" name="argument" >
+	    </div>
+  	</div>
+  
+    <button type="submit" >Insert</button>
+</form>
 	</div>
 	<br>
 <%@ include file="../css/footer.jsp" %>
