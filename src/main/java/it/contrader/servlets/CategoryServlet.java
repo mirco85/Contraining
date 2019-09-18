@@ -41,7 +41,7 @@ public class CategoryServlet extends HttpServlet {
 		
 		switch (mode.toUpperCase()) {
 
-		case "USERLIST":
+		case "CATEGORYLIST":
 			updateList(request);
 			getServletContext().getRequestDispatcher("/category/category.jsp").forward(request, response);
 			break;
