@@ -4,9 +4,15 @@ public class Answer
 {
 	// dichiaro le variabili della classe Answer
 		private int id;
+		
 		private int iduser;
+		
 		private int idquestion;
+		
 		private int answer;
+		
+		private String username, questiontext;
+		
 		
 		// Costruttore vuoto
 		public Answer() {	
@@ -57,6 +63,20 @@ public class Answer
 
 		public void setAnswer(int answer) {
 			this.answer = answer;
+		}
+		public String getUsername() {
+			return username;
+		}
+
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public String getQuestiontext() {
+			return questiontext;
+		}
+
+		public void setQuestiontext(String questiontext) {
+			this.questiontext = questiontext;
 		}
 
 		public String toString() {

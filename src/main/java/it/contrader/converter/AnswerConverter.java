@@ -17,6 +17,8 @@ public class AnswerConverter implements Converter<Answer, AnswersDTO> {
 			 AnswersDTO.setIduser(answer.getIduser());
 			 AnswersDTO.setIdquestion(answer.getIdquestion());
 			 AnswersDTO.setAnswer(answer.getAnswer());
+			 AnswersDTO.setUsername(answer.getUsername());
+			 AnswersDTO.setQuestiontext(answer.getQuestiontext());
 		 }
 		 return AnswersDTO;		 
 	}
@@ -28,6 +30,8 @@ public class AnswerConverter implements Converter<Answer, AnswersDTO> {
 			answer.setIduser(AnswersDTO.getIduser());
 			answer.setIdquestion(AnswersDTO.getIdquestion());
 			answer.setAnswer(AnswersDTO.getAnswer());
+			answer.setUsername(AnswersDTO.getUsername());
+			answer.setQuestiontext(AnswersDTO.getQuestiontext());
 		}
 		return answer;
 	}

@@ -9,9 +9,14 @@ import it.contrader.model.Answer;
 
 public class AnswerDAO implements DAO<Answer>
 {
-	private final String QUERY_ALL = "SELECT * FROM answers";
+	private final String QUERY_ALL = "SELECT answers.id, answers.iduser, answers.idquestion, answers.answer, questions.text, user.username "
+			+ "FROM answers join user on answers.iduser = user.id "
+			+ "join questions on answers.idquestion = questions.id  ";
 	private final String QUERY_CREATE = "INSERT INTO answers (iduser, idquestion, answer) VALUES (?,?,?)";
-	private final String QUERY_READ = "SELECT * FROM answers WHERE id=?";
+	private final String QUERY_READ = "SELECT answers.id, answers.iduser, answers.idquestion, answers.answer, questions.text, user.username "
+			+ "FROM answers join user on answers.iduser = user.id "
+			+ "join questions on answers.idquestion = questions.id  "
+			+ "WHERE answers.id=?";
 	private final String QUERY_UPDATE = "UPDATE answers SET iduser=?, idquestion=?, answer=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM answers WHERE id=?";
 
@@ -30,8 +35,12 @@ public class AnswerDAO implements DAO<Answer>
 				int iduser = resultSet.getInt("iduser");
 				int idquestion = resultSet.getInt("idquestion");
 				int answerField = resultSet.getInt("answer");
+				String questiontext = resultSet.getString("text");
+				String username = resultSet.getString("username");
 				
 				answer = new Answer(id, iduser, idquestion, answerField);
+				answer.setUsername(username);
+				answer.setQuestiontext(questiontext);
 				answerList.add(answer);				
 			}
 		} catch(SQLException ex) {
@@ -49,12 +58,17 @@ public class AnswerDAO implements DAO<Answer>
 			ResultSet result = pStatement.executeQuery();
 			result.next();
 			int idutente, idquestion, answerField, idanswer;
+			String username, questiontext;
+			username = result.getString("username");
+			questiontext = result.getString("text");
 			idutente = result.getInt("iduser");
 			idquestion = result.getInt("idquestion");
 			answerField = result.getInt("answer");
 			idanswer = result.getInt("id");
 			
 			Answer answer = new Answer(idanswer, idutente, idquestion, answerField);
+			answer.setUsername(username);
+			answer.setQuestiontext(questiontext);
 			return answer;
 		} catch(SQLException ex) {
 			return null;

@@ -86,12 +86,7 @@ public class UserDTO {
 	public String getUsername() {
 		return username;
 	}
-
-	@Override
-	public String toString() {
-		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
-	}
-
+	
 	public String getDatanascita() {
 		return datanascita;
 	}
@@ -123,4 +118,11 @@ public class UserDTO {
 	public void setCodicefiscale(String codicefiscale) {
 		this.codicefiscale = codicefiscale;
 	}
+	
+	@Override
+	public String toString() {
+		return  id + "\t" + datanascita + "\t\t" + firstname + "\t\t" + lastname + "\t\t" + username +"\t\t" +   password + "\t\t" + usertype + "\t\t" + codicefiscale;
+	}
+
+
 }
