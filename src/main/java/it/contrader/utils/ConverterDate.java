@@ -13,7 +13,6 @@ public class ConverterDate {
 	public static String dateToString(Date d) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String f = sdf.format(d);
-		System.out.println(f);
 		return f;
 	}
 	
