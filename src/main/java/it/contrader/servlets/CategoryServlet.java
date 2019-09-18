@@ -85,7 +85,7 @@ public class CategoryServlet extends HttpServlet {
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/user/category.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/category/category.jsp").forward(request, response);
 			break;
 		}
 	}
