@@ -13,6 +13,7 @@ public class QuestionDTO
 {
 	private int id;
 	private String argument;
+	private int idargument;
 	private String text;
 	private String answer1;
 	private String answer2;
@@ -20,18 +21,18 @@ public class QuestionDTO
 	
 	public QuestionDTO() {	
 	}
-	public QuestionDTO (int id, String argument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO (int id, int idargument, String text, String answer1, String answer2, String answer3)
 	{
 		this.id = id;
-		this.argument = argument;
+		this.idargument = idargument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 	}
-	public QuestionDTO ( String argument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO ( int idargument, String text, String answer1, String answer2, String answer3)
 	{
-		this.argument = argument;
+		this.idargument = idargument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
@@ -75,11 +76,20 @@ public class QuestionDTO
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
+	public int getIdargument() {
+		return this.idargument;
+	}
+	 public void setIdargument(int idargument) {
+		 this.idargument = idargument;
+	 }
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		String tab = "\t";
 		sb.append(id).append(tab)
+		    .append(idargument).append(tab)
 			.append(argument).append(tab)
 			.append(text).append(tab)
 			.append(answer1).append(tab)

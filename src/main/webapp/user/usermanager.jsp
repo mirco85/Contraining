@@ -28,6 +28,8 @@
 			<th>Lastname</th>
 			<th>Data di nascita</th>
 			<th>Codice fiscale</th>
+			
+			
 			<th></th>
 			<th></th>
 		</tr>
@@ -37,7 +39,8 @@
 		<tr>
 			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
 					<%=u.getUsername()%>
-			</a></td>
+			</a>
+			</td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUsertype()%></td>
 			<td><%=u.getFirstname()%></td>
@@ -58,34 +61,33 @@
 
 
 <form id="floatright" action="UserServlet?mode=insert" method="post">
-  <div class="row">
-    <div class="col-25">
-      <label for="user">Username</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="user" name="username" placeholder="inserisci username">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-     <label for="pass">Password</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="pass" name="password" placeholder="inserisci password"> 
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">Usertype</label>
-    </div>
-   		 <div class="col-75">
- 			<select id="type" name="usertype">
-  				<option value="ADMIN">ADMIN</option>
-  				<option value="USER">USER</option>
- 
-			</select>
+	<div class="row">
+	    <div class="col-25">
+	      	<label for="username">UserName</label>
+	    </div>
+	    <div class="col-75">
+	      	<input type="text" id="username" name="username" >
+	    </div>
+  	</div>
+    <div class="row">
+	    <div class="col-25">
+	    	<label for="pass">Password</label>
+	    </div>
+	    <div class="col-75">
+	      	<input type="text" id="pass" name="password" placeholder="inserisci password"> 
+	    </div>
+  	</div>
+    <div class="row">
+    	<div class="col-25">
+    		<label for="type">UserType</label>
     	</div>
-  </div>
+	    <div class="col-75">
+	      	<select id="type" name="usertype" > 
+		      	<option value ="ADMIN"> Admin</option>
+		      	<option value ="USER"> User</option>
+	      	</select>
+	    </div>
+  	</div>
   	<div class="row">
   		<div class="col-25">
       		<label for="firstname">Firstname</label>

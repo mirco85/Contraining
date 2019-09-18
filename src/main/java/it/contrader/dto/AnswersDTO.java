@@ -9,6 +9,8 @@ public class AnswersDTO {
 	private int idquestion;
 	
 	private int answer;
+	
+	private String username, questiontext;
 
 	public AnswersDTO() {
 		super();
@@ -58,6 +60,23 @@ public class AnswersDTO {
 	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getQuestiontext() {
+		return questiontext;
+	}
+
+	public void setQuestiontext(String questiontext) {
+		this.questiontext = questiontext;
+	}
+
 
 	@Override
 	public String toString() {
