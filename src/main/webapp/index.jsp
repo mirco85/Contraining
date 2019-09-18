@@ -19,7 +19,8 @@
 				 <input type="password" id="pass" name="password" placeholder="Insert password">
 		
 			<button type="submit" value="Login" name="pulsante">Login</button>
-			<a href="user/registeruser.jsp">Registrati</a>
+			<a href="UserServlet?mode=REGISTERUSER">Registrati</a>
+			<!--<a href="/user/registeruser.jsp">Registrati</a>-->
 		</form>
 
 		<%

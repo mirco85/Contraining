@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <html>
 <head>
-<link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 
 <title>Login SAMPLE</title>
 </head>
 <body>
 
 	<div class="loginContainer">
-		<form class="login" action="UserServlet?mode=insert" method="post">
+		<form class="login" action="UserServlet?mode=register" method="post">
 				<!-- Campo nome -->
 				<label for="firstname">Nome: </label>
 				<input type="text" id="firstname" name="firstname" placeholder="Insert firstname">
@@ -31,6 +31,15 @@
 			<button type="submit" value="Login" name="pulsante">Registrati</button>
 			
 		</form>
+		
+		<%
+			Object registerValidation = request.getAttribute("registerValid");
+			if(registerValidation != null && !((Boolean)registerValidation)) {
+				%>
+				<p class="loginError">I campi inseriti non sono validi</p>
+				<%
+			}
+		%>
 	</div>
 	
 </body>

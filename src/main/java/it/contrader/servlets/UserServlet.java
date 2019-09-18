@@ -26,6 +26,23 @@ public class UserServlet extends HttpServlet {
 		List<UserDTO>listDTO = service.getAll();
 		request.setAttribute("list", listDTO);
 	}
+	
+	private boolean isRegisterValid(UserDTO userToRegister) {
+		if(userToRegister.getUsername().length() == 0)
+			return false;
+		if(userToRegister.getPassword().length() == 0)
+			return false;
+		if(userToRegister.getFirstname().length() == 0)
+			return false;
+		if(userToRegister.getLastname().length() == 0)
+			return false;
+		if(userToRegister.getDatanascita().length() == 0)
+			return false;
+		if(userToRegister.getCodicefiscale().length() == 0)
+			return false;
+		
+		return true;
+	}
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +53,12 @@ public class UserServlet extends HttpServlet {
 		boolean ans;
 
 		switch (mode.toUpperCase()) {
-
+		
+		case "REGISTERUSER":
+			//updateList(request);
+			getServletContext().getRequestDispatcher("/user/registeruser.jsp").forward(request, response);
+			break;
+			
 		case "USERLIST":
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
@@ -69,6 +91,25 @@ public class UserServlet extends HttpServlet {
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			break;
+		case "REGISTER":
+			datanascita = request.getParameter("datanascita").toString();
+			firstname = request.getParameter("firstname").toString();
+			lastname = request.getParameter("lastname").toString();
+			username = request.getParameter("username").toString();
+			password = request.getParameter("password").toString();
+			usertype = "USER";
+			codicefiscale = request.getParameter("codicefiscale").toString();
+			dto = new UserDTO (datanascita,firstname,lastname,username,password,usertype,codicefiscale);
+			if(!isRegisterValid(dto)) {
+				request.setAttribute("registerValid", false);
+				getServletContext().getRequestDispatcher("/user/registeruser.jsp").forward(request, response);
+			} else {
+				ans = service.insert(dto);
+				request.setAttribute("ans", ans);
+				updateList(request);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			}
 			break;
 			
 		case "UPDATE":
