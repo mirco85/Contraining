@@ -26,6 +26,11 @@ public class UserConverter {
 			userDTO.setUsername(user.getUsername());
 			userDTO.setPassword(user.getPassword());
 			userDTO.setUsertype(user.getUsertype());
+			userDTO.setFirstname(user.getFirstname());
+			userDTO.setLastname(user.getLastname());
+			userDTO.setDatanascita(user.getDatanascita());
+			userDTO.setCodicefiscale(user.getCodicefiscale());
+			
 		}
 		return userDTO;
 	}
@@ -41,6 +46,11 @@ public class UserConverter {
 			user.setUsername(userDTO.getUsername());
 			user.setPassword(userDTO.getPassword());
 			user.setUsertype(userDTO.getUsertype());
+			user.setFirstname(userDTO.getFirstname());
+			user.setLastname(userDTO.getLastname());
+			user.setDatanascita(userDTO.getDatanascita());
+			user.setCodicefiscale(userDTO.getCodicefiscale());
+			
 		}
 		return user;
 	}

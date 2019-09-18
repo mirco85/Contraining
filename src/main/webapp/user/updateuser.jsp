@@ -46,6 +46,39 @@
 			</select>
     	</div>
   </div>
+  
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="firstname">Firstname</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="text" id="firstname" name="firstname" placeholder="Inserire il nome" />
+    	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="lastname">Lastname</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="text" id="lastname" name="lastname" placeholder="Inserire il cognome" />
+    	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="datanascita">Data di nascita</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="date" id="datanascita" name="datanascita" />
+    	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="codicefiscale">Codice fiscale</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="text" id="codicefiscale" name="codicefiscale" placeholder="Inserire il codice fiscale" />
+    	</div>
+  	</div>
       <button type="submit" >Edit</button>
 </form>
 

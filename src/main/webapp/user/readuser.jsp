@@ -22,11 +22,19 @@
 		<th>Username</th>
 		<th>Password</th>
 		<th>Usertype</th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Data di nascita</th>
+			<th>Codice fiscale</th>
 	</tr>
 	<tr>
 		<td><%=u.getUsername()%></td>
 		<td> <%=u.getPassword()%></td>
 		<td> <%=u.getUsertype()%></td>
+			<td><%=u.getFirstname()%></td>
+			<td><%=u.getLastname()%></td>
+			<td><%=u.getDatanascita()%></td>
+			<td><%=u.getCodicefiscale()%></td>
 	</tr>	
 </table>
 

@@ -21,13 +21,13 @@
 
 	<table>
 		<tr>
-			<th>DataDiNascita</th>
-			<th>FirstName</th>
-			<th>LastName</th>
 			<th>Username</th>
 			<th>Password</th>
 			<th>Usertype</th>
-			<th>CodiceFiscale</th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Data di nascita</th>
+			<th>Codice fiscale</th>
 			
 			
 			<th></th>
@@ -41,11 +41,11 @@
 					<%=u.getUsername()%>
 			</a>
 			</td>
-			<td><%=u.getDatanascita()%></td>
-			<td><%=u.getFirstname()%></td>
-			<td><%=u.getLastname()%></td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUsertype()%></td>
+			<td><%=u.getFirstname()%></td>
+			<td><%=u.getLastname()%></td>
+			<td><%=u.getDatanascita()%></td>
 			<td><%=u.getCodicefiscale()%></td>
 			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
@@ -69,30 +69,6 @@
 	      	<input type="text" id="username" name="username" >
 	    </div>
   	</div>
-  	<div class="row">
-    	<div class="col-25">
-      		<label for="datanascita">Data Di Nascita</label>
-    	</div>
-    	<div class="col-75">
-      		<input type="date" id="datanascita" name="datanascita" >
-    	</div>
-  	</div>
-  	<div class="row">
-    	<div class="col-25">
-     		<label for="pass">FirstName</label>
-    	</div>
-    	<div class="col-75">
-      		<input type="text" id="firstname" name="firstname" placeholder="inserisci il tuo nome"> 
-    	</div>
-  	</div>
-  	<div class="row">
-	    <div class="col-25">
-	    	<label for="type">LastName</label>
-	    </div>
-	    <div class="col-75">
-	    	<input type="text" id="lastname" name="lastname" placeholder="inserisci il tuo cognome">
-	    </div>
-	</div>
     <div class="row">
 	    <div class="col-25">
 	    	<label for="pass">Password</label>
@@ -101,7 +77,6 @@
 	      	<input type="text" id="pass" name="password" placeholder="inserisci password"> 
 	    </div>
   	</div>
-  
     <div class="row">
     	<div class="col-25">
     		<label for="type">UserType</label>
@@ -113,16 +88,39 @@
 	      	</select>
 	    </div>
   	</div>
-	<div class="row">
-    	<div class="col-25">
-    		<label for="codicefiscale">Codice Fiscale</label>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="firstname">Firstname</label>
     	</div>
-    	<div class="col-75">
-      		<input type="text" id="codicefiscale" name="codicefiscale" placeholder="inserisci il codice fiscale"> 
+   		<div class="col-75">
+ 			<input type="text" id="firstname" name="firstname" placeholder="Inserire il nome" />
     	</div>
- 	</div>
-
-	<button type="submit" >Insert</button>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="lastname">Lastname</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="text" id="lastname" name="lastname" placeholder="Inserire il cognome" />
+    	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="datanascita">Data di nascita</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="date" id="datanascita" name="datanascita" />
+    	</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-25">
+      		<label for="codicefiscale">Codice fiscale</label>
+    	</div>
+   		<div class="col-75">
+ 			<input type="text" id="codicefiscale" name="codicefiscale" placeholder="Inserire il codice fiscale" />
+    	</div>
+  	</div>
+    <button type="submit" >Insert</button>
 </form>
 
 </div>
