@@ -165,10 +165,11 @@ public class UserServlet extends HttpServlet {
 				UserDTO loggeduser = (UserDTO)request.getSession().getAttribute("user");
 				dto = new UserDTO (loggeduser.getId(),datanascita,firstname,lastname,username,password,usertype,codicefiscale);
 				ans = service.update(dto);
+				request.getSession().setAttribute("user", loggeduser);
 				getServletContext().getRequestDispatcher("/user/userprofile.jsp").forward(request, response);
 				
 			} else {
-				boolean passworderrata=true;
+				Boolean passworderrata=true;
 				request.setAttribute("errorepassword", passworderrata);
 				getServletContext().getRequestDispatcher("/user/edituserprofile.jsp").forward(request, response);
 				
