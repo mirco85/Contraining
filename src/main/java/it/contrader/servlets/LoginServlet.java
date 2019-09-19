@@ -45,10 +45,8 @@ public class LoginServlet extends HttpServlet {
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
-				System.out.println("User ok");
 			} else {
 				//altrimenti torna alla pagina di login
-				System.out.println("User no");
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 				return;
 			}

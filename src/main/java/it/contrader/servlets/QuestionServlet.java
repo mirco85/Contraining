@@ -43,19 +43,23 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
  
  case "QUESTIONLIST":
 	 updateList(request);
-	 getServletContext().getRequestDispatcher("/question/questionmanager.jsp").forward(request,response);
+	 getServletContext().getRequestDispatcher("/questions/questionmanager.jsp").forward(request,response);
 	 break;
 	 
  case "READ":
 	 id = Integer.parseInt(request.getParameter("id"));
-	dto = service.read(id);
+	 dto = service.read(id);
+		 System.out.println(dto);
 	 request.setAttribute("dto",dto);
 	 
 	 if(request.getParameter("update") == null) {
-		 getServletContext().getRequestDispatcher("/question/readquestion.jsp").forward(request,  response);
+		 getServletContext().getRequestDispatcher("/questions/readquestion.jsp").forward(request,  response);
 		 
 	 }
-	 else getServletContext().getRequestDispatcher("/questions/updatequestion.jsp").forward(request,  response);
+	 else {
+		 updateList(request);
+		 getServletContext().getRequestDispatcher("/questions/updatequestion.jsp").forward(request,  response);
+	 }
 	 
 	 break;
 	 
@@ -70,7 +74,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 ans = service.insert(dto);
 	 request.setAttribute("ans", ans);
 	 updateList(request);
-	 getServletContext().getRequestDispatcher("/question/questionmanager.jsp").forward(request, response);
+	 getServletContext().getRequestDispatcher("/questions/questionmanager.jsp").forward(request, response);
 	 break;
 	 
  case "UPDATE":
@@ -84,7 +88,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3,questiontime);
 	 ans = service.update(dto);
 	 updateList(request);
-	 getServletContext().getRequestDispatcher("/question/questionmanager.jsp").forward(request, response);
+	 getServletContext().getRequestDispatcher("/questions/questionmanager.jsp").forward(request, response);
 	 break;
 	
  case "DELETE":
@@ -92,7 +96,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 ans = service.delete(id);
 	 request.setAttribute("ans", ans);
 	 updateList(request);
-	 getServletContext().getRequestDispatcher("/question/questionmanager.jsp").forward(request,  response);
+	 getServletContext().getRequestDispatcher("/questions/questionmanager.jsp").forward(request,  response);
 	 break;
 	
  }

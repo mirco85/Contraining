@@ -18,9 +18,8 @@
 <div class="main">
 
 <%
-	QuestionDTO a = (QuestionDTO) request.getAttribute("dto");
-	List<CategoryDTO> category = (List<CategoryDTO>)request.getAttribute("category");
-	QuestionDTO question = (QuestionDTO) session.getAttribute("question");
+	QuestionDTO a = (QuestionDTO)request.getAttribute("dto");
+	List<CategoryDTO> category = (List<CategoryDTO>)request.getAttribute("categories");
 %>
 
 
@@ -47,7 +46,7 @@
       		<label for="text">Question Text</label>
     	</div>
    		<div class="col-75">
- 			<input type="text" id="text" name="text"  value ="<%=question.getText() %>" />
+ 			<input type="text" id="text" name="text"  value ="<%=a.getText() %>" />
     	</div>
   </div>
   <div class="row">
@@ -55,7 +54,7 @@
       		<label for="answer1">Answer 1</label>
     	</div>
    		<div class="col-75">
- 			<input type="text" id="answer1" name="answer1"  value ="<%=question.getAnswer1() %>" />
+ 			<input type="text" id="answer1" name="answer1"  value ="<%=a.getAnswer1() %>" />
     	</div>
   </div>
   <div class="row">
@@ -63,7 +62,7 @@
       		<label for="answer2">Answer 2</label>
     	</div>
    		<div class="col-75">
- 			<input type="text" id="answer2" name="answer2"  value ="<%=question.getAnswer2() %>" />
+ 			<input type="text" id="answer2" name="answer2"  value ="<%=a.getAnswer2() %>" />
     	</div>
   </div>
   <div class="row">
@@ -71,7 +70,7 @@
       		<label for="answer3">Answer 3</label>
     	</div>
    		<div class="col-75">
- 			<input type="text" id="answer3" name="answer3"  value ="<%=question.getAnswer3() %>" />
+ 			<input type="text" id="answer3" name="answer3"  value ="<%=a.getAnswer3() %>" />
     	</div>
   </div>
   <div class="row">
@@ -79,7 +78,7 @@
       		<label for="questiontime">Question Time</label>
     	</div>
    		<div class="col-75">
- 			<input type="time" id="questiontime" name="questiontime"  value ="<%=question.getQuestiontime() %>" />
+ 			<input type="time" id="questiontime" name="questiontime"  value ="<%=a.getQuestiontime() %>" />
     	</div>
   </div>
   	

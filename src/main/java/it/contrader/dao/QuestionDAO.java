@@ -16,7 +16,7 @@ public class QuestionDAO implements DAO<Question>{
 	
 	private final String QUERY_ALL = "select questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime from Questions JOIN Category on questions.idargument=category.id";
 	private final String QUERY_CREATE = "INSERT INTO questions (idargument, text, answer1,answer2,answer3,questiontime) VALUES (?,?,?,?,?,?)";
-	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime FROM Questions JOIN Category on questions.idargument=category.id WHERE id=?";
+	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime FROM Questions JOIN Category on questions.idargument=category.id WHERE questions.id=?";
 	private final String QUERY_UPDATE = "UPDATE questions SET idargument=?, text=?, answer1=?,answer2=?,answer3=?,questiontime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM questions WHERE id=?";
 	
@@ -67,7 +67,6 @@ public class QuestionDAO implements DAO<Question>{
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			return false;
 		}
 
@@ -101,6 +100,7 @@ public class QuestionDAO implements DAO<Question>{
 			
 			return question;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		}
 
