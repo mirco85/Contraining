@@ -134,6 +134,47 @@ public class UserServlet extends HttpServlet {
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
 			break;
+		case "USERPROFILE":
+			
+			getServletContext().getRequestDispatcher("/user/userprofile.jsp").forward(request, response);
+			break;
+			
+		case   "DELETEUSERPROFILE":
+			id = Integer.parseInt(request.getParameter("id"));
+			ans = service.delete(id);
+			request.setAttribute("ans", ans);
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			break;
+			
+		case "EDITUSERPROFILE":
+			getServletContext().getRequestDispatcher("/user/edituserprofile.jsp").forward(request, response);
+			break;
+			
+		case  "UPDATEUSERPROFILE":
+			datanascita = request.getParameter("datanascita");
+			firstname = request.getParameter("firstname");
+			lastname = request.getParameter("lastname");
+			username = request.getParameter("username");
+			password = request.getParameter("password");
+			usertype = "user";
+			codicefiscale = request.getParameter("codicefiscale");
+			
+			String confermapassword = request.getParameter("confermapassword");
+			if(confermapassword.equals(password)) {
+				
+				UserDTO loggeduser = (UserDTO)request.getSession().getAttribute("user");
+				dto = new UserDTO (loggeduser.getId(),datanascita,firstname,lastname,username,password,usertype,codicefiscale);
+				ans = service.update(dto);
+				getServletContext().getRequestDispatcher("/user/userprofile.jsp").forward(request, response);
+				
+			} else {
+				boolean passworderrata=true;
+				request.setAttribute("errorepassword", passworderrata);
+				getServletContext().getRequestDispatcher("/user/edituserprofile.jsp").forward(request, response);
+				
+				
+			}
+			break;
 		}
 	}
 }
