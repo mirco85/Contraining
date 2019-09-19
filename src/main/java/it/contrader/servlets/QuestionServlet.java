@@ -59,7 +59,8 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 String answer1 = request.getParameter("answer1").toString();
 	 String answer2 = request.getParameter("answer2").toString();
 	 String answer3 = request.getParameter("answer3").toString();
-	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3);
+	 int questiontime = Integer.parseInt(request.getParameter("questiontime").toString());
+	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3,questiontime);
 	 ans = service.insert(dto);
 	 request.setAttribute("ans", ans);
 	 updateList(request);
@@ -73,7 +74,8 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 answer2 = request.getParameter("answer2");
 	 answer3 = request.getParameter("answer3");
 	 id = Integer.parseInt(request.getParameter("id"));
-	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3);
+	 questiontime = Integer.parseInt(request.getParameter("questiontime"));
+	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3,questiontime);
 	 ans = service.update(dto);
 	 updateList(request);
 	 getServletContext().getRequestDispatcher("/question/questionmanager.jsp").forward(request, response);

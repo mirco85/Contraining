@@ -18,10 +18,11 @@ public class QuestionDTO
 	private String answer1;
 	private String answer2;
 	private String answer3;
+	private int questiontime;
 	
 	public QuestionDTO() {	
 	}
-	public QuestionDTO (int id, int idargument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO (int id, int idargument, String text, String answer1, String answer2, String answer3, int questiontime)
 	{
 		this.id = id;
 		this.idargument = idargument;
@@ -29,14 +30,16 @@ public class QuestionDTO
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
+		this.questiontime = questiontime;
 	}
-	public QuestionDTO ( int idargument, String text, String answer1, String answer2, String answer3)
+	public QuestionDTO ( int idargument, String text, String answer1, String answer2, String answer3, int questiontime)
 	{
 		this.idargument = idargument;
 		this.text = text;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
+		this.questiontime = questiontime;
 	}
 	
 
@@ -81,7 +84,16 @@ public class QuestionDTO
 	}
 	 public void setIdargument(int idargument) {
 		 this.idargument = idargument;
-	 }
+	}
+	
+	public int getQuestiontime() {
+		return this.questiontime;
+	} 
+	
+	public void setQuestiontime(int questiontime) {
+		this.questiontime = questiontime;
+	}
+	 
 	
 	
 	@Override
@@ -94,7 +106,8 @@ public class QuestionDTO
 			.append(text).append(tab)
 			.append(answer1).append(tab)
 			.append(answer2).append(tab)
-			.append(answer3);
+			.append(answer3).append(tab)
+			.append(questiontime);
 		
 		
 		return sb.toString();

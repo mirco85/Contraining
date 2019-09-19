@@ -14,10 +14,10 @@ import it.contrader.utils.ConnectionSingleton;
 public class QuestionDAO implements DAO<Question>{
 	
 	
-	private final String QUERY_ALL = "select questions.id,argument,idargument,text,answer1,answer2,answer3 from Questions JOIN Category on questions.idargument=category.id";
-	private final String QUERY_CREATE = "INSERT INTO questions (idargument, text, answer1,answer2,answer3) VALUES (?,?,?,?,?)";
-	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3 FROM Questions JOIN Category on questions.idargument=category.id WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE questions SET idargument=?, text=?, answer1=?,answer2=?,answer3=? WHERE id=?";
+	private final String QUERY_ALL = "select questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime from Questions JOIN Category on questions.idargument=category.id";
+	private final String QUERY_CREATE = "INSERT INTO questions (idargument, text, answer1,answer2,answer3,questiontime) VALUES (?,?,?,?,?,?)";
+	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime FROM Questions JOIN Category on questions.idargument=category.id WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE questions SET idargument=?, text=?, answer1=?,answer2=?,answer3=?,questiontime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM questions WHERE id=?";
 	
 	
@@ -40,8 +40,9 @@ public class QuestionDAO implements DAO<Question>{
 				String answer1 = resultSet.getString("answer1");
 				String answer2 = resultSet.getString("answer2");
 				String answer3 = resultSet.getString("answer3");
+				int questiontime = resultSet.getInt("questiontime");
 				
-				question = new Question(idargument,text, answer1, answer2,answer3);
+				question = new Question(idargument,text, answer1, answer2,answer3,questiontime);
 				question.setId(id);
 				question.setArgument(argument);
 				questionsList.add(question);
@@ -62,6 +63,7 @@ public class QuestionDAO implements DAO<Question>{
 			preparedStatement.setString(3, questionsToInsert.getAnswer1());
 			preparedStatement.setString(4, questionsToInsert.getAnswer2());
 			preparedStatement.setString(5, questionsToInsert.getAnswer3());
+			preparedStatement.setInt(6, questionsToInsert.getQuestiontime());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -83,7 +85,7 @@ public class QuestionDAO implements DAO<Question>{
 			
 			String argument,text, answer1,answer2,answer3;
             
-			int idargument;
+			int idargument,questiontime;
 
 			argument = resultSet.getString("argument");
 			idargument = resultSet.getInt("idargument");
@@ -91,7 +93,8 @@ public class QuestionDAO implements DAO<Question>{
 			answer1 = resultSet.getString("answer1");
 			answer2 = resultSet.getString("answer2");
 			answer3 = resultSet.getString("answer3");
-			Question question = new Question(idargument,text, answer1,answer2,answer3);
+			questiontime = resultSet.getInt("questiontime");
+			Question question = new Question(idargument,text, answer1,answer2,answer3,questiontime);
 			question.setId(resultSet.getInt("id"));
 			question.setArgument(argument);
 			
@@ -134,6 +137,9 @@ public class QuestionDAO implements DAO<Question>{
 					questionsToUpdate.setAnswer3(questionRead.getAnswer3());
 				}
 				
+				if (questionsToUpdate.getQuestiontime() == 0) {
+					questionsToUpdate.setQuestiontime(questionRead.getQuestiontime());
+				}
 
 				
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
@@ -142,7 +148,8 @@ public class QuestionDAO implements DAO<Question>{
 				preparedStatement.setString(3, questionsToUpdate.getAnswer1());
 				preparedStatement.setString(4, questionsToUpdate.getAnswer2());
 				preparedStatement.setString(5, questionsToUpdate.getAnswer3());
-				preparedStatement.setInt(6, questionsToUpdate.getId());
+				preparedStatement.setInt(6, questionsToUpdate.getQuestiontime());
+				preparedStatement.setInt(7, questionsToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

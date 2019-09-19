@@ -22,6 +22,7 @@ public class QuestionConverter  {
 			questionDTO.setAnswer1(question.getAnswer1());
 			questionDTO.setAnswer2(question.getAnswer2());
 			questionDTO.setAnswer3(question.getAnswer3());
+			questionDTO.setQuestiontime(question.getQuestiontime());
 			
 			
 		}
@@ -39,6 +40,7 @@ public class QuestionConverter  {
 			question.setAnswer1(questionDTO.getAnswer1());
 			question.setAnswer2(questionDTO.getAnswer2());
 			question.setAnswer3(questionDTO.getAnswer3());
+			question.setQuestiontime(questionDTO.getQuestiontime());
 		}
 		return question;
 	}
