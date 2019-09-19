@@ -51,6 +51,7 @@ public class UserServlet extends HttpServlet {
 		UserDTO dto;
 		int id;
 		boolean ans;
+		String confermapassword;
 
 		switch (mode.toUpperCase()) {
 		
@@ -98,18 +99,29 @@ public class UserServlet extends HttpServlet {
 			lastname = request.getParameter("lastname").toString();
 			username = request.getParameter("username").toString();
 			password = request.getParameter("password").toString();
+			confermapassword = request.getParameter("confermapassword").toString(); 
 			usertype = "USER";
 			codicefiscale = request.getParameter("codicefiscale").toString();
-			dto = new UserDTO (datanascita,firstname,lastname,username,password,usertype,codicefiscale);
-			if(!isRegisterValid(dto)) {
-				request.setAttribute("registerValid", false);
+			if(password.equals(confermapassword)) {
+				dto = new UserDTO (datanascita,firstname,lastname,username,password,usertype,codicefiscale);
+				if(!isRegisterValid(dto)) {
+					request.setAttribute("registerValid", false);
+					getServletContext().getRequestDispatcher("/user/registeruser.jsp").forward(request, response);
+				} else {
+					ans = service.insert(dto);
+					request.setAttribute("ans", ans);
+					updateList(request);
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				}
+			} 
+			else 
+			{
+				Boolean passworderrata=true;
+				request.setAttribute("errorepassword", passworderrata);
 				getServletContext().getRequestDispatcher("/user/registeruser.jsp").forward(request, response);
-			} else {
-				ans = service.insert(dto);
-				request.setAttribute("ans", ans);
-				updateList(request);
-				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				
 			}
+			
 			break;
 			
 		case "UPDATE":
@@ -159,7 +171,7 @@ public class UserServlet extends HttpServlet {
 			usertype = "user";
 			codicefiscale = request.getParameter("codicefiscale");
 			
-			String confermapassword = request.getParameter("confermapassword");
+			confermapassword = request.getParameter("confermapassword");
 			if(confermapassword.equals(password)) {
 				
 				UserDTO loggeduser = (UserDTO)request.getSession().getAttribute("user");
