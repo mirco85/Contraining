@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.contrader.dto.CategoryDTO;
 import it.contrader.dto.QuestionDTO;
+import it.contrader.service.CategoryService;
 import it.contrader.service.QuestionService;
 
 public class QuestionServlet extends HttpServlet {
@@ -22,6 +24,10 @@ public void updateList(HttpServletRequest request) {
 	QuestionService service = new QuestionService();
 	List<QuestionDTO> listDTO = service.getAll();
 	request.setAttribute("list", listDTO);
+	
+	CategoryService categoryService = new CategoryService();
+	List<CategoryDTO> categories = categoryService.getAll();
+	request.setAttribute("categories", categories);
 }
 
 @Override
@@ -41,7 +47,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 break;
 	 
  case "READ":
-	 id = Integer.parseInt(request.getParameter("questionid"));
+	 id = Integer.parseInt(request.getParameter("id"));
 	dto = service.read(id);
 	 request.setAttribute("dto",dto);
 	 
