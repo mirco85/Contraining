@@ -156,6 +156,7 @@ public class UserDAO implements DAO<User> {
 					return false;
 
 			} catch (SQLException e) {
+				e.printStackTrace();
 				return false;
 			}
 		}
