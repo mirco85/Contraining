@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import it.contrader.model.Question;
 import it.contrader.utils.ConnectionSingleton;
@@ -19,6 +20,7 @@ public class QuestionDAO implements DAO<Question>{
 	private final String QUERY_READ =  "SELECT questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime FROM Questions JOIN Category on questions.idargument=category.id WHERE questions.id=?";
 	private final String QUERY_UPDATE = "UPDATE questions SET idargument=?, text=?, answer1=?,answer2=?,answer3=?,questiontime=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM questions WHERE id=?";
+	private final String QUERY_BY_CATEGORY = "select questions.id,argument,idargument,text,answer1,answer2,answer3,questiontime from Questions JOIN Category on questions.idargument=category.id where category.id=?";
 	
 	
 	public QuestionDAO() {
@@ -72,6 +74,53 @@ public class QuestionDAO implements DAO<Question>{
 
 	}
 	
+	private List<Question> chooseRandomQuestions(List<Question> questions) {
+		// If questions are less than 20, choose all questions
+		if(questions.size() < 20) {
+			return questions;
+		}
+		
+		List<Question> result = new ArrayList();
+		Random qRandom = new Random();
+		int pos;
+		for(int i = 0; i < 20; i++) {
+			pos = (int)(qRandom.nextDouble() * questions.size());
+			result.add(questions.get(pos));
+			questions.remove(pos);
+		}
+		return result;
+	}
+	
+	public List<Question> getByCategory(int categoryID) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_BY_CATEGORY);
+			preparedStatement.setInt(1,  categoryID);
+			ResultSet results = preparedStatement.executeQuery();
+			List<Question> questions = new ArrayList();
+			String argument, text, a1,a2,a3;
+			int id, questionTime;
+			while(results.next()) {
+				id = results.getInt("id");
+				questionTime = results.getInt("questionTime");
+				argument = results.getString("argument");
+				text = results.getString("text");
+				a1 = results.getString("answer1");
+				a2 = results.getString("answer2");
+				a3 = results.getString("answer3");
+				
+				Question q = new Question(id, categoryID, text, a1, a2, a3, questionTime);
+				q.setArgument(argument);
+				questions.add(q);
+			}
+			return chooseRandomQuestions(questions);
+		}  catch(SQLException ex) {
+			return null;
+		}
+		
+		
+	}
+	
 	public Question read(int questionId) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -100,7 +149,6 @@ public class QuestionDAO implements DAO<Question>{
 			
 			return question;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			return null;
 		}
 

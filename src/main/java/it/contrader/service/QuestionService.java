@@ -19,12 +19,14 @@ public class QuestionService {
 
 	public List<QuestionDTO> getAll(){
 		return this.questionConverter.toDTOList(this.questionDAO.getAll());
-		}
+	}
 	
-	
+	public List<QuestionDTO> getByCategory(int idCategory) {
+		return this.questionConverter.toDTOList(this.questionDAO.getByCategory(idCategory));
+	}
 	 public QuestionDTO read( int questionid) {
 		 return this.questionConverter.toDTO(this.questionDAO.read(questionid));
-		  }
+	 }
 	
 	 public boolean delete( int questionid) {
 		 return questionDAO.delete(questionid);
