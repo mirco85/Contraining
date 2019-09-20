@@ -25,22 +25,7 @@
 
 <form id="floatleft" action="QuestionServlet?mode=update&id=<%=a.getId()%>" method="post">
   
-  <div class="row">
-    <div class="col-25">
-     <label for="idquestion">Argument</label>
-    </div>
-    <div class="col-75">
-    	<select name="idargument" id="idargument">
-    		<%
-    			for(CategoryDTO c : category) {
-    		%>
-    		<option value="<%=c.getId()%>" <%if(c.getId() == a.getIdargument()) {%>selected<%} %>><%=c.getArgument() %></option>
-    		<%
-    			}
-    		%>
-    	</select>
-    </div>
-  </div>
+
   <div class="row">
   		<div class="col-25">
       		<label for="text">Question Text</label>
@@ -80,6 +65,22 @@
    		<div class="col-75">
  			<input type="time" id="questiontime" name="questiontime"  value ="<%=a.getQuestiontime() %>" />
     	</div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+     <label for="idquestion">Argument</label>
+    </div>
+    <div class="col-75">
+    	<select name="idargument" id="idargument">
+    		<%
+    			for(CategoryDTO c : category) {
+    		%>
+    		<option value="<%=c.getId()%>" <%if(c.getId() == a.getIdargument()) {%>selected<%} %>><%=c.getArgument() %></option>
+    		<%
+    			}
+    		%>
+    	</select>
+    </div>
   </div>
   	
 

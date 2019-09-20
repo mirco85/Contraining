@@ -86,6 +86,7 @@ public void service(HttpServletRequest request, HttpServletResponse response) th
 	 id = Integer.parseInt(request.getParameter("id"));
 	 questiontime = Integer.parseInt(request.getParameter("questiontime"));
 	 dto = new QuestionDTO (idargument,text,answer1,answer2,answer3,questiontime);
+	 dto.setId(id);
 	 ans = service.update(dto);
 	 updateList(request);
 	 getServletContext().getRequestDispatcher("/questions/questionmanager.jsp").forward(request, response);
