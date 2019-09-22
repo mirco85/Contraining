@@ -44,6 +44,7 @@ public class TestServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserDTO loggedUser = (UserDTO)session.getAttribute("user");
 		int idCategory, questionIndex, answerPosition, idQuestion;
+		List<QuestionDTO> questions;
 		
 		
 		switch (mode.toUpperCase()) {
@@ -55,23 +56,28 @@ public class TestServlet extends HttpServlet {
 
 		case "STARTTEST":
 			idCategory = Integer.parseInt(request.getParameter("idCategory"));
-			session.setAttribute("questions", getTestQuestions(idCategory));
+			questions = getTestQuestions(idCategory);
+			session.setAttribute("questions", questions);
 			questionIndex = 0;
 			request.setAttribute("questionIndex", questionIndex);
-			
-			getServletContext().getRequestDispatcher("/test/dotest.jsp").forward(request, response);
+
+			if(questionIndex == questions.size())
+				getServletContext().getRequestDispatcher("/test/endtest.jsp").forward(request, response);
+			else
+				getServletContext().getRequestDispatcher("/test/dotest.jsp").forward(request, response);
 			
 			break;
 
 		case "SUBMITANSWER":
-			questionIndex = Integer.parseInt(request.getAttribute("questionIndex").toString());
-			answerPosition = Integer.parseInt(request.getAttribute("answerPosition").toString());
-			idQuestion = ((List<QuestionDTO>)session.getAttribute("questions")).get(questionIndex).getId();
+			questionIndex = Integer.parseInt(request.getParameter("questionIndex").toString());
+			answerPosition = Integer.parseInt(request.getParameter("answerPosition").toString());
+			questions = (List<QuestionDTO>)session.getAttribute("questions");
+			idQuestion = questions.get(questionIndex).getId();
 			insertAnswer(idQuestion, answerPosition, loggedUser.getId());
 			questionIndex++;
 			request.setAttribute("questionIndex", questionIndex);
 			
-			if(questionIndex == 20)
+			if(questionIndex == questions.size())
 				getServletContext().getRequestDispatcher("/test/endtest.jsp").forward(request, response);
 			else
 				getServletContext().getRequestDispatcher("/test/dotest.jsp").forward(request, response);

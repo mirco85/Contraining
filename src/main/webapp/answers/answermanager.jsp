@@ -5,25 +5,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>User Manager</title>
+<link href="css/mainstyle.css" rel="stylesheet">
+<title>Answer Manager</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
 	
-<div class="main">
+<div class="main mainContainer">
 	<%
 		List<AnswersDTO> list = (List<AnswersDTO>) request.getAttribute("list");
 	%>
-
-<br>
 	<table>
 		<tr>
 			<th>id</th>
 			<th>Question</th>
 			<th>Username</th>
-			<th>Answer</th>
+			<th>Answer Position</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -49,7 +47,6 @@
 		%>
 	</table>
 	</div>
-<br>
 <%@ include file="../css/footer.jsp" %>
 </body>
 </html>

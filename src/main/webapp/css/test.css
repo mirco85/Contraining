@@ -1,0 +1,78 @@
+div.dataContainer {
+	display: flex;
+	position: relative;
+	top:0;
+	left:0;
+	min-height: 10vh;
+	min-width: 50vw;
+	
+	border:0;
+	padding:0;
+	margin:0;
+	
+	border-radius: 1vh;
+	background-color: #f2f2f2;
+	justify-content: center;
+}
+
+div.dataContainer div {
+	display: flex;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left:0;
+	
+	padding:0;
+	margin:0;
+}
+div.selectCategoryBox {
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: row;
+}
+div.questionBox {
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+}
+div.endtestbox {
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+div.dataContainer div div {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left:0;
+	padding: 1vh;
+}
+div.questionBox div.choice {
+	justify-content: flex-start;
+}
+div.buttonBox {}
+div.buttonBox button, div.buttonBox a {
+  display: flex;
+  position: relative;
+  height: 5vh;
+  width: auto;
+  padding-left: 5vh;
+  padding-right:5vh;
+  box-sizing: content-box;
+  
+  justify-content: center;
+  align-items: center;
+
+  background-color: #00a990;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 2vh;
+  cursor: pointer;
+  border-radius: 7px;
+}

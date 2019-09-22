@@ -4,46 +4,28 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 <title>Read Category</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
-<br>
-
-<div class="main">
-<%CategoryDTO c = (CategoryDTO) request.getAttribute("dto");%>
 
 
-<table>
-	<tr> 
-		<th>Argument</th>
-		
-	</tr>
-	<tr>
-		<td><%=c.getArgument()%></td>
-		
-	</tr>	
-</table>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-</div>
+	<div class="main mainContainer">
+	<%CategoryDTO c = (CategoryDTO) request.getAttribute("dto");%>
+	
+	
+		<table>
+			<tr> 
+				<th>Argument</th>
+			</tr>
+			<tr>
+				<td><%=c.getArgument()%></td>
+			</tr>	
+		</table>
+	
+	</div>
 
 <%@ include file="../css/footer.jsp" %>
 

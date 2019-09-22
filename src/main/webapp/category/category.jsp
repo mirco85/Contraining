@@ -5,31 +5,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 <title>Category</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
 
-<div class="main">
+<div class="main mainContainer">
 	<%
 		List<CategoryDTO> list = (List<CategoryDTO>) request.getAttribute("list");
 	%>
 
-<br>
-<table>
+	<table>
 		<tr>
 			<th>id</th>
 			<th>argument</th>
 			<th></th>
 			<th></th>
 		</tr>
-<%
+		<%
 			for (CategoryDTO c : list) 
 			{
 		%>
-<tr>
+		<tr>
 			<td><a href=CategoryServlet?mode=read&id=<%=c.getId()%>>
 					<%=c.getId()%>
 			</a></td>
@@ -46,20 +45,20 @@
 		%>
 	</table>
 	
-	<form id="floatright" action="CategoryServlet?mode=insert" method="post">
-	<div class="row">
-	    <div class="col-25">
-	      	<label for="argument">Argument</label>
-	    </div>
-	    <div class="col-75">
-	      	<input type="text" id="argument" name="argument" >
-	    </div>
-  	</div>
-  
-    <button type="submit" >Insert</button>
-</form>
+	<form action="CategoryServlet?mode=insert" method="post">
+		<div class="formTitle">Aggiungi una categoria</div>
+		<div class="row">
+			<label for="argument">Argument</label>
+			<div class="inputBox">
+		    	<input type="text" id="argument" name="argument" >
+			</div>
+	  	</div>
+	  	<div class="rowButton">
+    		<button type="submit" >Insert</button>
+	  	</div>
+	</form>
 	</div>
-	<br>
+	
 <%@ include file="../css/footer.jsp" %>
 </body>
 </html>

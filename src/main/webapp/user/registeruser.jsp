@@ -4,38 +4,59 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 
 <title>Login SAMPLE</title>
 </head>
 <body>
 
-	<div class="loginContainer">
+	<div class="centeredContainer">
 		<form class="register" action="UserServlet?mode=register" method="post">
-				<!-- Campo nome -->
-				<!-- <label for="firstname">Nome: </label> -->
-				<input type="text" id="firstname" name="firstname" placeholder="Nome">
-				<!-- Campo cognome -->
-				<!-- <label for="lastname">Cognome: </label> -->
-				<input type="text" id="lastname" name="lastname" placeholder="Cognome">
-				<!-- Campo data di nascita -->
-				<!-- <label for="datanascita">Data di nascita: </label> -->
-				<input type="date" id="datanascita" name="datanascita" placeholder="Data di nascita">
-				<!-- Campo codice fiscale -->
-				<!-- <label for="codicefiscale">Codice fiscale: </label> -->
-				<input type="text" id="codicefiscale" name="codicefiscale" placeholder="Codice fiscale">
-				<!-- Campo username -->
-				<!-- <label for="user">Username: </label> -->
-				<input type="text" id="user" name="username" placeholder="Username">
-				<!-- Campo password -->
-				<!-- <label for="pass">Password: </label> -->
-				<input type="password" id="pass" name="password" placeholder="Password">
-				<!-- Campo conferma password -->
-				<!-- <label for="pass">Conferma Password: </label> -->
-				<input type="password" id="confermapass" name="confermapassword" placeholder="Conferma password"> 
-		
-			<button type="submit" value="Login" name="pulsante">Registrati</button>
-			
+				<div class="row">
+					<label for="firstname">Nome: </label>
+					<div class="inputBox">
+						<input type="text" id="firstname" name="firstname" placeholder="Nome">
+					</div>
+				</div>
+				<div class="row">
+					<label for="lastname">Cognome: </label>
+					<div class="inputBox">
+						<input type="text" id="lastname" name="lastname" placeholder="Cognome">
+					</div>
+				</div>
+				<div class="row">
+					<label for="datanascita">Data di nascita: </label>
+					<div class="inputBox">
+						<input type="date" id="datanascita" name="datanascita" placeholder="Data di nascita">
+					</div>
+				</div>
+				<div class="row">
+					<label for="codicefiscale">Codice fiscale: </label>
+					<div class="inputBox">
+						<input type="text" id="codicefiscale" name="codicefiscale" placeholder="Codice fiscale">
+					</div>
+				</div>
+				<div class="row">
+					<label for="user">Username: </label>
+					<div class="inputBox">
+						<input type="text" id="user" name="username" placeholder="Username">
+					</div>
+				</div>
+				<div class="row">
+					<label for="pass">Password: </label>
+					<div class="inputBox">
+						<input type="password" id="pass" name="password" placeholder="Password">
+					</div>
+				</div>
+				<div class="row">
+					<label for="pass">Conferma Password: </label>
+					<div class="inputBox">
+						<input type="password" id="confermapass" name="confermapassword" placeholder="Conferma password"> 
+					</div>
+				</div>
+				<div class="rowButton">
+					<button type="submit" value="register" name="pulsante">Registrati</button>
+				</div>
 		</form>
 		<%
 			Object registerValidation = request.getAttribute("registerValid");

@@ -5,20 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 <title>User Manager</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
 
-<div class="main">
+<div class="main mainContainer">
 	<%
 		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
 	%>
-
-<br>
-
 	<table>
 		<tr>
 			<th>Username</th>
@@ -60,28 +57,23 @@
 
 
 
-<form id="floatright" action="UserServlet?mode=insert" method="post">
+<form action="UserServlet?mode=insert" method="post">
+	<div class="formTitle">Aggiungi una utente</div>
 	<div class="row">
-	    <div class="col-25">
-	      	<label for="username">UserName</label>
-	    </div>
-	    <div class="col-75">
+	   	<label for="username">UserName</label>
+	    <div class="inputBox">
 	      	<input type="text" id="username" name="username" >
 	    </div>
   	</div>
     <div class="row">
-	    <div class="col-25">
-	    	<label for="pass">Password</label>
-	    </div>
-	    <div class="col-75">
+	    <label for="pass">Password</label>
+	    <div class="inputBox">
 	      	<input type="text" id="pass" name="password" placeholder="inserisci password"> 
 	    </div>
   	</div>
     <div class="row">
-    	<div class="col-25">
-    		<label for="type">UserType</label>
-    	</div>
-	    <div class="col-75">
+    	<label for="type">UserType</label>
+	    <div class="inputBox">
 	      	<select id="type" name="usertype" > 
 		      	<option value ="ADMIN"> Admin</option>
 		      	<option value ="USER"> User</option>
@@ -89,42 +81,36 @@
 	    </div>
   	</div>
   	<div class="row">
-  		<div class="col-25">
-      		<label for="firstname">Firstname</label>
-    	</div>
-   		<div class="col-75">
+  		<label for="firstname">Firstname</label>
+   		<div class="inputBox">
  			<input type="text" id="firstname" name="firstname" placeholder="Inserire il nome" />
     	</div>
   	</div>
   	<div class="row">
-  		<div class="col-25">
-      		<label for="lastname">Lastname</label>
-    	</div>
-   		<div class="col-75">
+  		<label for="lastname">Lastname</label>
+   		<div class="inputBox">
  			<input type="text" id="lastname" name="lastname" placeholder="Inserire il cognome" />
     	</div>
   	</div>
   	<div class="row">
-  		<div class="col-25">
-      		<label for="datanascita">Data di nascita</label>
-    	</div>
-   		<div class="col-75">
+  		<label for="datanascita">Data di nascita</label>
+   		<div class="inputBox">
  			<input type="date" id="datanascita" name="datanascita" />
     	</div>
   	</div>
   	<div class="row">
-  		<div class="col-25">
-      		<label for="codicefiscale">Codice fiscale</label>
-    	</div>
-   		<div class="col-75">
+  		<label for="codicefiscale">Codice fiscale</label>
+   		<div class="inputBox">
  			<input type="text" id="codicefiscale" name="codicefiscale" placeholder="Inserire il codice fiscale" />
     	</div>
   	</div>
-    <button type="submit" >Insert</button>
+  	<div class="rowButton">
+    	<button type="submit" >Insert</button>
+  	</div>
 </form>
 
 </div>
-<br>
+
 <%@ include file="../css/footer.jsp" %>
 </body>
 </html>

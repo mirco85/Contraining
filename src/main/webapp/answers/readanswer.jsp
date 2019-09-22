@@ -4,49 +4,31 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 <title>Read Answer</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
 
-<br>
-
-<div class="main">
-<%AnswersDTO a = (AnswersDTO) request.getAttribute("dto");%>
-<table>
-	<tr> 
-		<th>id</th>
-		<th>Id question</th>
-		<th>Id utente</th>
-		<th>Answer</th>
-	</tr>
-	<tr>
-		<td><%=a.getId()%></td>
-		<td><%=a.getIdquestion()%></td>
-		<td> <%=a.getIduser()%></td>
-		<td> <%=a.getAnswer()%></td>
-	</tr>	
-	<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-</div>
+	<div class="main mainContainer">
+	<%AnswersDTO a = (AnswersDTO) request.getAttribute("dto");%>
+		<table>
+			<tr> 
+				<th>id</th>
+				<th>Domanda</th>
+				<th>Username</th>
+				<th>Answer Position</th>
+			</tr>
+			<tr>
+				<td><%=a.getId()%></td>
+				<td><%=a.getQuestiontext()%></td>
+				<td> <%=a.getUsername()%></td>
+				<td> <%=a.getAnswer()%></td>
+			</tr>
+		</table>
+	</div>
 
 <%@ include file="../css/footer.jsp" %>
 </body>
 </html>
-</table>

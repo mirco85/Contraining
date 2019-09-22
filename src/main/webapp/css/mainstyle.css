@@ -1,0 +1,339 @@
+/* Main Layout */
+html {
+  scroll-behavior: smooth;
+}
+* {
+	font-family: sans-serif;
+}
+body {
+	margin:0;
+	padding:0;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+}
+div.text{
+	clear:both;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.header {
+	position: relative;
+	top:0;
+	left:0;
+	height: 15vh;
+	width: 100vw;
+	line-height: 15vh;
+	text-align: center;
+	font-size: 10vh;
+	font-family: sans-serif;
+	color: #00a990;
+}
+
+
+div.centeredContainer {
+	display: flex;
+	position: fixed;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	top:0;
+	left:0;
+	
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.main {
+	position: relative;
+	height: 73vh;
+	width: 100vw;
+	text-align: justify;
+}
+div.mainContainer {
+	display: flex;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	top:0;
+	left:0;
+	
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	padding: 5vh;
+	box-sizing: border-box;
+}
+
+.footer {
+	display: flex;
+	position: relative;
+	height: 4vh;
+	width: 100vw;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	background-color: #00a990;
+	color: #ffffff;
+	width: 100%;
+	border-radius: 7px;
+	padding: 3px;
+	box-sizing:border-box;
+}
+
+/*Navigation bar*/
+div.navbar {
+	display: flex;
+	background: #00a990;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 8vh;
+	top: 0;
+	z-index: 2;
+	border-radius: 7px;
+	
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+div.navbar a {
+	display: flex;
+	color: #ffffff;
+	height: 8vh;
+	width: auto;
+	padding: 0;
+	padding-left: 2vh;
+	padding-right: 2vh;
+	box-sizing: content-box;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	font-size: 3vh;
+	border-radius: 7px;
+	background: #00a990;
+}
+div.navbar a:hover {
+	background: #00ccad;
+	color: #ffffff;
+}
+div.navbar a.active {
+	background: #00ccad;
+	color: #ffffff;
+}
+#logout {
+	position: absolute;
+	right: 0;
+	color: #ffffff;
+}
+
+/* FORM */
+select {
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  margin: 8px 0;
+}
+select:hover {
+  background-color:  #00ccad;
+}
+option{
+width: 100%;
+  background-color: #ffff;
+  color: #000000;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+	
+}
+input {
+  width: 100%;
+  background-color: #ffff;
+  color: #000000;
+  padding: 2vh;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="radio"] {
+	width: auto;
+	margin-right: 1vw;
+}
+input:hover {
+  background-color:  #00ccad;
+}
+res {
+	float: left;
+	width: 25%;
+	margin-top: 3%;
+	background-color: #00a990;
+	border-radius: 7px;
+	color: #ffffff;
+	text-align:center;
+}
+form {
+	display: flex;
+	position: relative;
+	width: 75%;
+	border-radius: 7px;
+	background-color: #f2f2f2;
+	box-sizing: border-box;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+form.login, form.register {
+	width: 40vw;
+	padding: 3vh;
+}
+
+form div.row, form div.rowButton {
+	position: relative;
+	display: flex;
+	height: 10vh;
+	width: 100%;
+	top:0;
+	left:0;
+	
+	margin:0;
+	padding: 0.5vh;
+	border:0;
+	box-sizing: content-box;
+	
+	flex-direction: row;
+	
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+form div.row {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+form div.rowButton {
+	justify-content: center;
+	align-items: center;
+}
+form.login div.rowButton, form.register div.rowButton {
+	height: 8vh;
+}
+form div.row label, form div.row div.inputBox, div.formTitle, form div.rowButton, div.userProfileTitle {
+	display: flex;
+	position: relative;
+	top:0;
+	left:0;
+	padding: 0;
+	margin: 0;
+	border:0;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+}
+form div.row label {
+	width: 25%;
+	padding-right: 5%;
+	height:10vh;
+}
+form div.row div.inputBox {
+	width: 70%;
+	padding: 3%;
+	box-sizing: border-box;
+	height:10vh;
+}
+
+div.formTitle, div.userProfileTitle {
+	height: 7vh;
+	font-size: 3vh;
+	color: white;
+	background-color: #00a990;
+	font-weight: bold;
+}
+div.userProfileTitle {
+	width: 60%;
+}
+div.rowButton button, a.userProfileButton, a.registerButton {
+  display: flex;
+  position: relative;
+  height: 5vh;
+  width: auto;
+  padding-left: 5vh;
+  padding-right:5vh;
+  box-sizing: content-box;
+  
+  justify-content: center;
+  align-items: center;
+
+  background-color: #00a990;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 2vh;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+/* Tables */
+table {
+	position: relative;
+	top:0;
+	left:0;
+	width: 60%;
+	height: auto;
+	margin-bottom: 5vh;
+	
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+table tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+table th, table td {
+	text-align: center;
+	padding: 8px;
+}
+table th {
+	background-color: #00a990;
+	color: #ffffff;
+}
+
+/* USER PROFILE BUTTON */
+div.userProfileCommands {
+	display: flex;
+	height: 10vh;
+	width: 60%;
+	top:0;
+	left:0;
+	margin:0;
+	padding: 0;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+a.editUserProfileButton {
+	margin-right: 5vh;
+}
+a.deleteUserProfileButton {
+	background-color: rgb(154, 12, 19);
+}
+a.deleteUserProfileButton:hover {
+	background-color: rgb(187, 15, 23);
+}
+
+p.passwordErrata {
+	display: flex;
+	position: relative;
+	width: 75%;
+	font-size: 3vh;
+	padding: 3vh;
+	border-radius: 7px;
+	background-color: rgb(154, 12, 19);
+	color: white;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+}

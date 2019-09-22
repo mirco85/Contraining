@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
 	</head>
 	<body>
 		<%
@@ -27,8 +26,8 @@
 					%>
 					<div class="navbar">
 					  	<a class="active" href="homeuser.jsp">Home</a>
-					  	<a class="active" href="UserServlet?mode=userprofile">Profilo</a>
-					  	<a class="active" href="TestServlet?mode=selectcategory">Fai Test</a>
+					  	<a href="UserServlet?mode=userprofile">Profilo</a>
+					  	<a href="TestServlet?mode=selectcategory">Test</a>
 						<a href="LogoutServlet" id="logout">Logout</a>
 					</div>
 					<%

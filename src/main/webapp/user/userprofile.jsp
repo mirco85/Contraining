@@ -6,23 +6,21 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<link href="../css/vittoriostyle.css" rel="stylesheet">
+<link href="css/mainstyle.css" rel="stylesheet">
 <title>Profilo Utente</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
 <%@ include file="../menu/menu.jsp" %>
 <% UserDTO loggeduser = (UserDTO) session.getAttribute("user"); %>
-<div>
-	<div>
-      	<div>USER PROFILE</div>
+<div class="main mainContainer">
+      	<div class="userProfileTitle">USER PROFILE</div>
       	<table>
       		<tr>
       			<td>
       				USERNAME
       			</td>
       			<td>
-      			
       				<%= loggeduser.getUsername() %>
       			</td>
       			
@@ -63,11 +61,10 @@
       			</td>
       		</tr>
       	</table>
-      	<div>
-      		<a href="UserServlet?mode=edituserprofile">Modifica Account</a>
-      		<a href="UserServlet?mode=deleteuserprofile&id=<%=loggeduser.getId()%>">Elimina Account</a>
+      	<div class="userProfileCommands">
+      		<a class="userProfileButton editUserProfileButton" href="UserServlet?mode=edituserprofile">Modifica Account</a>
+      		<a class="userProfileButton deleteUserProfileButton" href="UserServlet?mode=deleteuserprofile&id=<%=loggeduser.getId()%>">Elimina Account</a>
       	</div>
-	</div>
 
 </div>
 
