@@ -43,7 +43,30 @@ div.centeredContainer {
 	
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: row;
+}
+div.logoContainer, div.loginContainer {
+	position: relative;
+	height: 50vh;
+	width: 40vw;
+	top:0;
+	left:0;
+	
+	margin:0;
+	border:0;
+}
+div.logoContainer {
+	background-image: url('/JspApp/css/images/logo.png');
+	background-repeat: no-repeat;
+	background-size: 25vh;
+	background-position: center;
+	border-right: 0.1vh solid rgb(190,190,190);
+	
+}
+div.loginContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .main {
 	position: relative;
@@ -187,9 +210,13 @@ form {
 	flex-direction: column;
 	justify-content: flex-start;
 }
-form.login, form.register {
+form.register {
 	width: 40vw;
 	padding: 3vh;
+}
+form.login {
+	padding: 3vh;
+	box-sizing: content-box;
 }
 
 form div.row, form div.rowButton {
@@ -256,7 +283,7 @@ div.formTitle, div.userProfileTitle {
 div.userProfileTitle {
 	width: 60%;
 }
-div.rowButton button, a.userProfileButton, a.registerButton {
+div.rowButton button, a.userProfileButton, a.registerButton, table td a {
   display: flex;
   position: relative;
   height: 5vh;
@@ -290,15 +317,20 @@ table {
 	border-collapse: collapse;
 }
 table tr:nth-child(even) {
-	background-color: #f2f2f2
+	background-color: #f2f2f2;
 }
 table th, table td {
 	text-align: center;
 	padding: 8px;
+	height: 4vh;
 }
 table th {
 	background-color: #00a990;
 	color: #ffffff;
+}
+table td a {
+	height: 75%;
+	padding: 2vh;
 }
 
 /* USER PROFILE BUTTON */
@@ -324,7 +356,7 @@ a.deleteUserProfileButton:hover {
 	background-color: rgb(187, 15, 23);
 }
 
-p.passwordErrata {
+p.passwordErrata, p.loginError {
 	display: flex;
 	position: relative;
 	width: 75%;

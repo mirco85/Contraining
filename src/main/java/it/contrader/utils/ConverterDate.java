@@ -16,6 +16,17 @@ public class ConverterDate {
 		return f;
 	}
 	
+	private static boolean isSQLCorrectFormat(String dateString) {
+		SimpleDateFormat sqlCorrect = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			sqlCorrect.parse(dateString);
+		} catch(ParseException e) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Prende una stringa data nel formato leggibile dd/MM/yyyy e lo traduce in stringa nel formato ISO
 	 * Sql nel formato yyyy-MM-dd
@@ -23,6 +34,10 @@ public class ConverterDate {
 	 * @return
 	 */
 	public static String toDateString(String dateString) {
+		if(isSQLCorrectFormat(dateString)) {
+			return dateString;
+		}
+		
 		SimpleDateFormat fromModel = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat toSQL = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -31,7 +46,7 @@ public class ConverterDate {
 			sqlDateString = toSQL.format(fromModel.parse(dateString));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			 
+			// no format known
 		}
 		return sqlDateString;
 	}

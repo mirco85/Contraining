@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div class="header">SAMPLE Project
+<div class="header">CONTRAINING
 </div>
 
 
