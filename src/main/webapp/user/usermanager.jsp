@@ -58,7 +58,7 @@
 
 
 <form action="UserServlet?mode=insert" method="post">
-	<div class="formTitle">Aggiungi una utente</div>
+	<div class="formTitle">Aggiungi un utente</div>
 	<div class="row">
 	   	<label for="username">UserName</label>
 	    <div class="inputBox">
