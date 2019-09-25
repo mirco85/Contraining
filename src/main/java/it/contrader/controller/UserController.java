@@ -61,13 +61,18 @@ public class UserController {
 
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("datanascita") String datanascita, @RequestParam ("firstname") String firstname, @RequestParam ("lastname") String lastname, @RequestParam ("codicefiscale") String codicefiscale) {
 
 		UserDTO dto = new UserDTO();
 		dto.setId(id);
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setDatanascita(datanascita);
+		dto.setFirstname(firstname);
+		dto.setLastname(lastname);
+		dto.setCodicefiscale(codicefiscale);
+		
 		service.update(dto);
 		setAll(request);
 		return "users";
@@ -76,11 +81,15 @@ public class UserController {
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
+			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype, @RequestParam("datanascita") String datanascita, @RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("codicefiscale") String codicefiscale) {
 		UserDTO dto = new UserDTO();
 		dto.setUsername(username);
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
+		dto.setDatanascita(datanascita);
+		dto.setFirstname(firstname);
+		dto.setLastname(lastname);
+		dto.setCodicefiscale(codicefiscale);
 		service.insert(dto);
 		setAll(request);
 		return "users";

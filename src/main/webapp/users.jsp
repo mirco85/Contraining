@@ -19,7 +19,7 @@
 	</div>
 	<div class="main">
 		<%
-			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("list");
+			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("userlist");
 		%>
 
 		<br>
@@ -29,8 +29,10 @@
 				<th>Username</th>
 				<th>Password</th>
 				<th>Usertype</th>
-				<th></th>
-				<th></th>
+				<th>datanascita</th>
+				<th>firstname</th>
+				<th>lastname</th>
+				<th>codicefiscale</th>
 			</tr>
 			<%
 				for (UserDTO u : list) {
@@ -40,6 +42,10 @@
 				</a></td>
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUsertype()%></td>
+				<td><%=u.getDatanascita()%></td>
+				<td><%=u.getFirstname()%></td>
+				<td><%=u.getLastname()%></td>
+				<td><%=u.getCodicefiscale()%></td>
 				<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
 
 
@@ -72,6 +78,43 @@
 						placeholder="inserisci password">
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="data">Datanascita</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="data" name="datanascita"
+						placeholder="inserisci data di nascita">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="firstname">Firstname</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="firstname" name="firstname"
+						placeholder="inserisci first name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="lastname">Lastname</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="lastname" name="lastname"
+						placeholder="inserisci last name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="codicefiscale">Codicefiscale</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="codicefiscale" name="codicefiscale"
+						placeholder="inserisci codice fiscale">
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="col-25">
 					<label for="type">Usertype</label>
