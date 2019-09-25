@@ -99,6 +99,6 @@ public class UserController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("userlist", service.getAll());
 	}
 }
