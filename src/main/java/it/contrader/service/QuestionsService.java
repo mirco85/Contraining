@@ -22,9 +22,5 @@ public class QuestionsService extends AbstractService<Questions, QuestionsDTO> {
 	@Autowired
 	private QuestionsConverter questionsConverter;
 	
-	public List<QuestionsDTO> findAllQuestions() {
-		
-		return questionsConverter.toDTOList(questionsRepository.findAll());
-	}
 
 }
