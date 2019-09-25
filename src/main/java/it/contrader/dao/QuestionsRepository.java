@@ -7,13 +7,14 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import it.contrader.model.Questions;
+
 
 
 @Repository
 @Transactional
 
-public interface QuestionsRepository<Questions> extends CrudRepository<Questions, Long>{
+public interface QuestionsRepository extends CrudRepository<Questions, Long>{
 	
-	public List<Questions> findAll();
 
 }
