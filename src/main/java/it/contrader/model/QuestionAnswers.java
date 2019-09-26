@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +30,9 @@ public class QuestionAnswers {
 	private String text;
 	private Long  idquestion;
 	private AnswerType rightAnswer;
+	
+	@ManyToOne
+	@JoinColumn(name= "idquestion", nullable = false)
+	private Questions question;
 
 }
