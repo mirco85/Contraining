@@ -15,4 +15,6 @@ public class UserAnswersDTO {
 	private Long id, idanswer,iduser,idtest,numtest;
 
 	private UserDTO user;
+	
+	private TestDTO test;
 }

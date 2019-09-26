@@ -23,5 +23,7 @@ public class TestQuestion {
 	
 	private Long idTest;
 	private Long idUser;
+	
+	
 }
 

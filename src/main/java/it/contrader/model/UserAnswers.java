@@ -30,5 +30,8 @@ public class UserAnswers {
 	@ManyToOne
 	@JoinColumn(name="id_user", nullable = false)
 	private User user;
+	@ManyToOne
+	@JoinColumn (name ="id_test", nullable =false)
+	private Test test;
 
 }
