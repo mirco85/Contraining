@@ -18,7 +18,7 @@ public class QuestionAnswersConverter extends AbstractConverter<QuestionAnswers,
 			questionanswersDTO.setId(questionanswers.getId());
 			questionanswersDTO.setText(questionanswers.getText());
 			questionanswersDTO.setIdquestion(questionanswers.getIdquestion());
-			questionanswersDTO.setRight(questionanswers.getRight());
+			questionanswersDTO.setRightAnswer(questionanswers.getRightAnswer());
 		}
 		
 		return questionanswersDTO;
@@ -33,7 +33,7 @@ public class QuestionAnswersConverter extends AbstractConverter<QuestionAnswers,
 			questionanswers.setId(questionanswersDTO.getId());
 			questionanswers.setText(questionanswersDTO.getText());
 			questionanswersDTO.setIdquestion(questionanswers.getIdquestion());
-			questionanswersDTO.setRight(questionanswers.getRight());
+			questionanswersDTO.setRightAnswer(questionanswers.getRightAnswer());
 		}
 		
 		return questionanswers;

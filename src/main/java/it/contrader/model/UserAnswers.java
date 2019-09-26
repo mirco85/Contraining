@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +27,8 @@ public class UserAnswers {
 	private Long idtest;
 	private Long numtest;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="id_user", nullable = false)
+	private User user;
 
 }

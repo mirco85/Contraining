@@ -17,6 +17,9 @@ import lombok.NoArgsConstructor;
 
 public class QuestionAnswers {
 	
+	public enum AnswerType {
+		RIGHT, WRONG;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,6 +27,6 @@ public class QuestionAnswers {
 	@Column(unique = true)
 	private String text;
 	private Long  idquestion;
-	private Boolean right;
+	private AnswerType rightAnswer;
 
 }

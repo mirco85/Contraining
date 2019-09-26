@@ -1,5 +1,7 @@
 package it.contrader.dto;
 
+import java.util.Set;
+
 import it.contrader.model.User.Usertype;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +23,6 @@ public class UserDTO {
 	private String lastname;
 	private String codicefiscale;
 	
+	private Set<UserAnswersDTO> answers;
 	
 }

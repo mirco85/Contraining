@@ -1,10 +1,13 @@
 package it.contrader.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +35,9 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String codicefiscale;
+	
+	@OneToMany(mappedBy="user")
+	private Set<UserAnswers> answers;
 	
 	
 	
