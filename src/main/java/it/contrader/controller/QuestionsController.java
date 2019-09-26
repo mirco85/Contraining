@@ -66,7 +66,7 @@ public class QuestionsController {
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readtext";
+		return "readquestions";
 	}
 	
 	private void setAll(HttpServletRequest request) {

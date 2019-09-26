@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.QuestionAnswersDTO;
-import it.contrader.model.QuestionAnswers.AnswerType;
 import it.contrader.service.QuestionAnswersService;
 
 
@@ -44,13 +43,13 @@ public class QuestionAnswersController {
 	}
 
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") AnswerType right) {
+	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("right") Boolean right) {
 
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
 		dto.setId(id);
 		dto.setText(text);
 		dto.setIdquestion(idquestion);
-		dto.setRightAnswer(right);
+		dto.setRight(right);
 		service.update(dto);
 		setAll(request);
 		return "questionanswers";
@@ -58,20 +57,20 @@ public class QuestionAnswersController {
 	}
 
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") AnswerType right) {
+	public String insert(HttpServletRequest request, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("right") Boolean right) {
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
 		dto.setText(text);
 		dto.setIdquestion(idquestion);
-		dto.setRightAnswer(right);
+		dto.setRight(right);
 		service.insert(dto);
 		setAll(request);
-		return "questions";
+		return "questionanswers";
 	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readtext";
+		return "readanswers";
 	}
 	
 	private void setAll(HttpServletRequest request) {
