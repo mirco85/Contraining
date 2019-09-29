@@ -1,8 +1,6 @@
 package it.contrader.dto;
 
-import java.util.Set;
-
-import it.contrader.model.UserAnswers;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +11,10 @@ import lombok.NoArgsConstructor;
 public class TestDTO {
 	
 	private Long Id;
-	private Long idCategory;
+	private CategoryDTO category;
 	private Long timeTest;
-	private Set<UserAnswersDTO> answers;
+	private String testName;
+	private List<QuestionsDTO> questions;
 	
 	
 }
