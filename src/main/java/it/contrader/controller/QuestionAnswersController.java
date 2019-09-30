@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.QuestionAnswersDTO;
+import it.contrader.dto.QuestionsDTO;
 import it.contrader.model.QuestionAnswers.AnswerType;
 import it.contrader.service.QuestionAnswersService;
 import it.contrader.service.QuestionsService;
@@ -17,8 +18,6 @@ import it.contrader.service.QuestionsService;
 
 @Controller
 @RequestMapping("/questionanswers")
-
-
 public class QuestionAnswersController {
 	
 
@@ -26,11 +25,12 @@ public class QuestionAnswersController {
 	private QuestionAnswersService service;
 	
 	@Autowired
-	private QuestionsService qservice;
+	private QuestionsService qService;
 	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
+		setAllQuestions(request);
 		return "questionanswers";
 	}
 
@@ -44,17 +44,20 @@ public class QuestionAnswersController {
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
+		setAllQuestions(request);
 		return "updatetextanswer";
 	}
 
 	@PostMapping("/update")
-	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") AnswerType right) {
+	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") String right) {
 
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
 		dto.setId(id);
 		dto.setText(text);
-		dto.setQuestion(qservice.read(idquestion));
-		dto.setRightAnswer(right);
+		QuestionsDTO question = qService.read(idquestion);
+		dto.setQuestion(question);
+		AnswerType a = AnswerType.valueOf(right);
+		dto.setRightAnswer(a);
 		service.update(dto);
 		setAll(request);
 		return "questionanswers";
@@ -62,12 +65,17 @@ public class QuestionAnswersController {
 	}
 
 	@PostMapping("/insert")
-	public String insert(HttpServletRequest request, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") AnswerType right) {
+	public String insert(HttpServletRequest request, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") String right) {
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
+		AnswerType a = AnswerType.valueOf(right);
+		QuestionsDTO question = qService.read(idquestion);
+		
 		dto.setText(text);
-		dto.setQuestion(qservice.read(idquestion));
-		dto.setRightAnswer(right);
+		dto.setQuestion(question);
+		dto.setRightAnswer(a);
+		
 		service.insert(dto);
+		
 		setAll(request);
 		return "questionanswers";
 	}
@@ -80,6 +88,9 @@ public class QuestionAnswersController {
 	
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("answerlist", service.getAll());
+	}
+	private void setAllQuestions(HttpServletRequest request) {
+		request.getSession().setAttribute("questionlist", qService.getAll());
 	}
 
 }
