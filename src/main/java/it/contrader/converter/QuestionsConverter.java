@@ -22,8 +22,7 @@ public class QuestionsConverter extends AbstractConverter<Questions, QuestionsDT
 			questionsDTO = new QuestionsDTO();
 			questionsDTO.setId(questions.getId());
 			questionsDTO.setText(questions.getText());
-			Set<QuestionAnswersDTO> answers = questionAnswersConverter.toDTOSet(questions.getQuestionanswers());
-			questionsDTO.setQuestionanswers(answers);
+
 		}
 		
 		return questionsDTO;
@@ -37,8 +36,7 @@ public class QuestionsConverter extends AbstractConverter<Questions, QuestionsDT
 			questions = new Questions();
 			questions.setId(questionsDTO.getId());
 			questions.setText(questionsDTO.getText());
-			Set<QuestionAnswers> answers = questionAnswersConverter.toEntitySet(questionsDTO.getQuestionanswers());
-			questions.setQuestionanswers(answers);
+			
 		}
 		
 		return questions;

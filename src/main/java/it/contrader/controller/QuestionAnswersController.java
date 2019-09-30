@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.contrader.dto.QuestionAnswersDTO;
 import it.contrader.model.QuestionAnswers.AnswerType;
 import it.contrader.service.QuestionAnswersService;
+import it.contrader.service.QuestionsService;
 
 
 @Controller
@@ -23,6 +24,9 @@ public class QuestionAnswersController {
 
 	@Autowired
 	private QuestionAnswersService service;
+	
+	@Autowired
+	private QuestionsService qservice;
 	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -49,7 +53,7 @@ public class QuestionAnswersController {
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
 		dto.setId(id);
 		dto.setText(text);
-		dto.setIdquestion(idquestion);
+		dto.setQuestion(qservice.read(idquestion));
 		dto.setRightAnswer(right);
 		service.update(dto);
 		setAll(request);
@@ -61,7 +65,7 @@ public class QuestionAnswersController {
 	public String insert(HttpServletRequest request, @RequestParam("text") String text, @RequestParam("idquestion") Long idquestion, @RequestParam("rightAnswer") AnswerType right) {
 		QuestionAnswersDTO dto = new QuestionAnswersDTO();
 		dto.setText(text);
-		dto.setIdquestion(idquestion);
+		dto.setQuestion(qservice.read(idquestion));
 		dto.setRightAnswer(right);
 		service.insert(dto);
 		setAll(request);

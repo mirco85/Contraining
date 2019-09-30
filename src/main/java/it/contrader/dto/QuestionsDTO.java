@@ -21,6 +21,5 @@ public class QuestionsDTO {
 	private String text;
 	
 	
-	private Set<QuestionAnswersDTO> questionanswers;
 
 }

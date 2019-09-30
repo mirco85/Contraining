@@ -13,7 +13,6 @@ public class QuestionAnswersDTO {
 	
 	private Long id;
 	private String text;
-	private Long  idquestion;
 	private AnswerType rightAnswer;
 	
 	

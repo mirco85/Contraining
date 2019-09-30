@@ -31,7 +31,6 @@ public class Questions {
 	@NotNull
 	private String text;
 	
-	@OneToMany(mappedBy="question")
-	private Set<QuestionAnswers> questionanswers;
+	
 
 }

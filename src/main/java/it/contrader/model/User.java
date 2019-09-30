@@ -36,8 +36,6 @@ public class User {
 	private String lastname;
 	private String codicefiscale;
 	
-	@OneToMany(mappedBy="user")
-	private Set<UserAnswers> answers;
 	
 	
 	

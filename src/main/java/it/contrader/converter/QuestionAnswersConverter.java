@@ -23,7 +23,7 @@ public class QuestionAnswersConverter extends AbstractConverter<QuestionAnswers,
 			questionanswersDTO = new QuestionAnswersDTO();
 			questionanswersDTO.setId(questionanswers.getId());
 			questionanswersDTO.setText(questionanswers.getText());
-			questionanswersDTO.setIdquestion(questionanswers.getIdquestion());
+		
 			questionanswersDTO.setRightAnswer(questionanswers.getRightAnswer());
 			QuestionsDTO question = questionsConverter.toDTO(questionanswers.getQuestion());
 			questionanswersDTO.setQuestion(question);
@@ -40,7 +40,7 @@ public class QuestionAnswersConverter extends AbstractConverter<QuestionAnswers,
 			questionanswers = new QuestionAnswers();
 			questionanswers.setId(questionanswersDTO.getId());
 			questionanswers.setText(questionanswersDTO.getText());
-			questionanswersDTO.setIdquestion(questionanswers.getIdquestion());
+		
 			questionanswersDTO.setRightAnswer(questionanswers.getRightAnswer());
 			Questions question = questionsConverter.toEntity(questionanswersDTO.getQuestion());
 			questionanswers.setQuestion(question);

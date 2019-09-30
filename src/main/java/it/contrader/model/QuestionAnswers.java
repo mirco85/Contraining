@@ -28,11 +28,10 @@ public class QuestionAnswers {
 	
 	@Column(unique = true)
 	private String text;
-	private Long  idquestion;
 	private AnswerType rightAnswer;
 	
 	@ManyToOne
-	@JoinColumn(name= "idquestion", nullable = false)
+	@JoinColumn(name= "id_question", nullable = false)
 	private Questions question;
 
 }

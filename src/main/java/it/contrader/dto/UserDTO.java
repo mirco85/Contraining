@@ -23,6 +23,6 @@ public class UserDTO {
 	private String lastname;
 	private String codicefiscale;
 	
-	private Set<UserAnswersDTO> answers;
+
 	
 }

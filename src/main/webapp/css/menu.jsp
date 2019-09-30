@@ -16,7 +16,7 @@
 						<a href="/user/getall">Users</a>
 						<a href="/category/getall">Categories</a>
 						<a href="/test/getall">Tests</a>
-						<a href="/questions/getall">Questions</a>
+						<a href="/Questions/getall">Questions</a>
 						<a href="/questionanswers/getall">Question answers</a>
 						<a href="/useranswers/getall">User answers</a>
 						<a href="/user/logout" id="logout">Logout</a>
