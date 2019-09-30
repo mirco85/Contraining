@@ -41,10 +41,10 @@
 					<%=t.getCategory().getCategory() %>
 				</td>
 				
-				<td><!-- <a href="/test/preupdate?id=<%=t.getId()%>"-->>Edit (not implemented yet)</a></td>
+				<td><!-- <a href="/test/preupdate?id=<%=t.getId()%>"-->Edit (not implemented yet)</a></td>
 
 
-				<td><a href="/test/delete?id=<%=t.getId()%>">Delete)</a></td>
+				<td><a href="/test/delete?id=<%=t.getId()%>">Delete</a></td>
 
 			</tr>
 			<%

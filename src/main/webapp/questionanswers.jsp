@@ -14,7 +14,7 @@
 	<%@ include file="./css/menu.jsp"%>
 	<div class="main">
 		<%
-			List<QuestionAnswersDTO> list = (List<QuestionAnswersDTO>) request.getSession().getAttribute("dto");
+			List<QuestionAnswersDTO> list = (List<QuestionAnswersDTO>) request.getSession().getAttribute("answerlist");
 		%>
 
 		<br>

@@ -15,7 +15,7 @@
 	<div class="main">
 		
 		<%
-			List<QuestionsDTO> list = (List<QuestionsDTO>) request.getSession().getAttribute("dto");
+			List<QuestionsDTO> list = (List<QuestionsDTO>) request.getSession().getAttribute("questionslist");
 		%>
 		
 		
@@ -51,7 +51,7 @@
 					<label for="question">Questions</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="question" name="question"
+					<input type="text" id="question" name="text"
 						placeholder="inserisci la domanda">
 				</div>
 			</div>

@@ -21,12 +21,15 @@
 
 
 <form id="floatleft" action="/Questions/update" method="post">
+
+	<input type="hidden" value="<%=q.getId()%>" name="id" />
+	
   <div class="row">
     <div class="col-25">
       <label for="question">Questions</label>
     </div>
     <div class="col-75">
-      <input type="text" id="question" name="question" value=<%=q.getText()%>>
+      <input type="text" id="question" name="text" value=<%=q.getText()%>>
     </div>
   </div>
         <button type="submit" >Edit</button>
