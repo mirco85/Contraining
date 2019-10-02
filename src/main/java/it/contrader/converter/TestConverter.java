@@ -12,11 +12,6 @@ public class TestConverter extends AbstractConverter <Test,TestDTO> {
 
 	@Override
 	public Test toEntity(TestDTO dto) {
-		/*
-		 * 1) CREO UN OGGETTO test
-		 * 2) Inserisco i dati che ho nel TestDTO nel nuovo oggetto Test
-		 * 3) ritorno Test
-		 */
 		// Creazione dell'oggetto test
 		Test test = new Test();
 		if(dto == null)
