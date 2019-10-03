@@ -2,14 +2,18 @@ package it.contrader.converter;
 
 import org.springframework.stereotype.Component;
 
+import it.contrader.dto.CategoryDTO;
 import it.contrader.dto.TestDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.Category;
 import it.contrader.model.Test;
 import it.contrader.model.User;
 
 @Component
 public class TestConverter extends AbstractConverter <Test,TestDTO> {
 
+	private static CategoryConverter categoryConverter = new CategoryConverter();
+	
 	@Override
 	public Test toEntity(TestDTO dto) {
 		// Creazione dell'oggetto test
@@ -19,7 +23,9 @@ public class TestConverter extends AbstractConverter <Test,TestDTO> {
 		
 		// Inserisco i dati che ho nel TestDTO nel nuovo oggetto Test 
 		test.setId(dto.getId());
-		test.setIdCategory(dto.getIdCategory());
+		
+		Category c = categoryConverter.toEntity(dto.getCategory());
+		test.setCategory(c);
 		test.setTestName(dto.getTestName());
 		test.setTimeTest(dto.getTimeTest());
 		return test;
@@ -34,7 +40,9 @@ public class TestConverter extends AbstractConverter <Test,TestDTO> {
 					return null;
 				
 				test.setId(entity.getId());
-				test.setIdCategory(entity.getIdCategory());
+				CategoryDTO cDto = categoryConverter.toDTO(entity.getCategory());
+				
+				test.setCategory(cDto);
 				test.setTestName(entity.getTestName());
 				test.setTimeTest(entity.getTimeTest());
 		

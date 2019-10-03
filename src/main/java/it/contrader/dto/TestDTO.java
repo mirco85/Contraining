@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -13,9 +14,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class TestDTO {
+public class TestDTO implements Serializable {
 	private Long id;
-	private Long idCategory;
+	private CategoryDTO category;
 	private Long timeTest;
 	private String testName;
 

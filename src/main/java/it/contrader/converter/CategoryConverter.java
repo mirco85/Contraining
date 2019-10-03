@@ -12,11 +12,8 @@ public class CategoryConverter  extends AbstractConverter<Category,CategoryDTO> 
 	public Category toEntity(CategoryDTO categoryDTO) {
 		Category category = null;
 		if (categoryDTO != null) {
-			System.out.println(categoryDTO.toString());
 			category = new Category(categoryDTO.getId(),categoryDTO.getCategory());			
-		} else {
-			System.out.print("AAAAAAHHH");
-		}
+		} 
 		return category;
 }
 
@@ -24,7 +21,6 @@ public class CategoryConverter  extends AbstractConverter<Category,CategoryDTO> 
 	public CategoryDTO toDTO(Category category) {
 		CategoryDTO categoryDTO = null;
 		if (category != null) {
-			System.out.println(category.toString());
 			categoryDTO = new CategoryDTO(category.getId(),category.getCategory());
 			
 		}
