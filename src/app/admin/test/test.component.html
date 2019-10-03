@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Test category
+          </th>
+          <th>
+            test time
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input placeholder="category" [(ngModel)]="testtoinsert.category">
+          </td>
+          <td>
+            <input placeholder="test time" [(ngModel)]="testtoinsert.testtime">
+          </td>
+          <td>
+            <button (click)="insert(testtoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let test of tests">
+          <td>
+            <input [(ngModel)]="test.category">
+          </td>
+          <td>
+            <input [(ngModel)]="test.testtime">
+          </td>
+          <td>
+            <button (click)=update(test)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(test)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>
