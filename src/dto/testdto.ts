@@ -5,9 +5,9 @@ export class TestDTO {
 
     id: number;
  
-    idcategory: number;
+    idCategory: number;
  
-    timetest: number;
+    timeTest: number;
     
     testName: String;
  }

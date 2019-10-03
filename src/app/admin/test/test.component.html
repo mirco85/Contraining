@@ -24,13 +24,13 @@
         </tr>
         <tr>
           <td>
-            <input placeholder="category" [(ngModel)]="testtoinsert.category">
+            <input type="number" placeholder="id della category" [(ngModel)]="testtoinsert.idCategory">
           </td>
           <td>
-            <input placeholder="test time" [(ngModel)]="testtoinsert.testtime">
+            <input type="number"  placeholder="test time" [(ngModel)]="testtoinsert.timeTest">
           </td>
           <td>
-            <input placeholder="test name" [(ngModel)]="testtoinsert.testname">
+            <input placeholder="test name" [(ngModel)]="testtoinsert.testName">
           </td>
           <td>
             <button (click)="insert(testtoinsert)">Insert</button>
@@ -41,13 +41,13 @@
         </tr>
         <tr *ngFor="let test of tests">
           <td>
-            <input [(ngModel)]="test.category">
+            <input [(ngModel)]="test.idCategory">
           </td>
           <td>
-            <input [(ngModel)]="test.testtime">
+            <input [(ngModel)]="test.timeTest">
           </td>
           <td>
-            <input [(ngModel)]="test.testname">
+            <input [(ngModel)]="test.testName">
           </td>
           <td>
             <button (click)=update(test)>Save</button>

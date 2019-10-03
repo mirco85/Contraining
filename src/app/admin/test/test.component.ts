@@ -9,7 +9,7 @@ import { TestDTO } from 'src/dto/testdto';
 })
 export class TestComponent implements OnInit {
 
-  test: TestDTO[];
+  tests: TestDTO[];
   testtoinsert: TestDTO = new TestDTO();
 
   constructor(private service: TestService) { }
@@ -18,7 +18,7 @@ export class TestComponent implements OnInit {
     this.getTest();
   }
   getTest() {
-    this.service.getAll().subscribe(test => this.test = test);
+    this.service.getAll().subscribe(test => this.tests = test);
   }
 
   delete(test: TestDTO) {
