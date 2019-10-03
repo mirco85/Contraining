@@ -8,5 +8,6 @@ export class TestDTO {
     idcategory: number;
  
     timetest: number;
- 
+    
+    testName: String;
  }

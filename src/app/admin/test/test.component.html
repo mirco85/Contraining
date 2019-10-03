@@ -13,6 +13,9 @@
             test time
           </th>
           <th>
+            Test name
+          </th>
+          <th>
             Edit
           </th>
           <th>
@@ -27,6 +30,9 @@
             <input placeholder="test time" [(ngModel)]="testtoinsert.testtime">
           </td>
           <td>
+            <input placeholder="test name" [(ngModel)]="testtoinsert.testname">
+          </td>
+          <td>
             <button (click)="insert(testtoinsert)">Insert</button>
           </td>
           <td>
@@ -39,6 +45,9 @@
           </td>
           <td>
             <input [(ngModel)]="test.testtime">
+          </td>
+          <td>
+            <input [(ngModel)]="test.testname">
           </td>
           <td>
             <button (click)=update(test)>Save</button>
