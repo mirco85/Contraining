@@ -31,7 +31,7 @@ export class AdminMenuComponent implements OnInit {
   }
 
   testmanagementcollapse() {
-    if(!this.isUserCollapsed) {
+    if(!this.isTestManagementCollapsed) {
       this.isTestManagementCollapsed = true;
     } else {
       this.isTestManagementCollapsed = false;
