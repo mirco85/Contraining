@@ -27,6 +27,10 @@ public class UserDTO {
 	private String password;
 
 	private Usertype usertype;
+	private String firstname;
+	private String lastname;
+	private String datanascita;
+	private String codicefiscale;
 	
 
 }
