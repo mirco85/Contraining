@@ -7,6 +7,9 @@
       <table>
         <tr>
           <th>
+            Curretly selected category
+          </th>
+          <th>
             Test category
           </th>
           <th>
@@ -23,8 +26,11 @@
           </th>
         </tr>
         <tr>
+          <td></td>
           <td>
-            <input type="number" placeholder="id della category" [(ngModel)]="testtoinsert.idCategory">
+            <select [(ngModel)]="testtoinsert.category">
+                <option *ngFor="let c of categories" [ngValue]="c">{{c.category}}</option>
+            </select>
           </td>
           <td>
             <input type="number"  placeholder="test time" [(ngModel)]="testtoinsert.timeTest">
@@ -41,7 +47,12 @@
         </tr>
         <tr *ngFor="let test of tests">
           <td>
-            <input [(ngModel)]="test.idCategory">
+              <span>{{test.category.category}}</span>
+          </td>
+          <td>
+              <select [(ngModel)]="test.category">
+                  <option *ngFor="let c of categories" [ngValue]="c" [selected]="c.id == test.category.id">{{c.category}}</option>
+              </select>
           </td>
           <td>
             <input [(ngModel)]="test.timeTest">

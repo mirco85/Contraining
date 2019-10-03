@@ -1,11 +1,11 @@
-import {Usertype} from './usertype';
+import {CategoryDTO} from './categorydto';
 
 
 export class TestDTO {
 
     id: number;
  
-    idCategory: number;
+    category: CategoryDTO;
  
     timeTest: number;
     
