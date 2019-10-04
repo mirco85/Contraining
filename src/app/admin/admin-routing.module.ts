@@ -6,6 +6,7 @@ import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { CategoryComponent } from './category/category.component';
 import { TestComponent } from './test/test.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'users', component: UsersComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent},
     { path: 'categories', component: CategoryComponent},
-    { path: 'test', component: TestComponent}
+    { path: 'test', component: TestComponent},
+    { path: 'questions', component: QuestionsComponent}
   ]}
 ];
 
