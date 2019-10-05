@@ -1,8 +1,8 @@
 package it.contrader.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-
 public class Test {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +33,4 @@ public class Test {
 	@OneToMany
 	@JoinColumn(name="idtest")
 	private List<Questions> questions = new ArrayList<>();
-
 }
