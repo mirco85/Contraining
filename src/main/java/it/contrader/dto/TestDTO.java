@@ -1,6 +1,7 @@
 package it.contrader.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -20,4 +21,5 @@ public class TestDTO implements Serializable {
 	private Long timeTest;
 	private String testName;
 
+	private List<QuestionsDTO> questions = new ArrayList<>();
 }

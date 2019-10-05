@@ -1,11 +1,15 @@
 package it.contrader.converter;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import it.contrader.dto.CategoryDTO;
+import it.contrader.dto.QuestionsDTO;
 import it.contrader.dto.TestDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.Category;
+import it.contrader.model.Questions;
 import it.contrader.model.Test;
 import it.contrader.model.User;
 
@@ -13,6 +17,7 @@ import it.contrader.model.User;
 public class TestConverter extends AbstractConverter <Test,TestDTO> {
 
 	private static CategoryConverter categoryConverter = new CategoryConverter();
+	private static QuestionsConverter questionsConverter = new QuestionsConverter();
 	
 	@Override
 	public Test toEntity(TestDTO dto) {
@@ -25,7 +30,9 @@ public class TestConverter extends AbstractConverter <Test,TestDTO> {
 		test.setId(dto.getId());
 		
 		Category c = categoryConverter.toEntity(dto.getCategory());
+		List<Questions> qs = questionsConverter.toEntityList(dto.getQuestions());
 		test.setCategory(c);
+		test.setQuestions(qs);
 		test.setTestName(dto.getTestName());
 		test.setTimeTest(dto.getTimeTest());
 		return test;
@@ -41,8 +48,10 @@ public class TestConverter extends AbstractConverter <Test,TestDTO> {
 				
 				test.setId(entity.getId());
 				CategoryDTO cDto = categoryConverter.toDTO(entity.getCategory());
+				List<QuestionsDTO> qs = questionsConverter.toDTOList(entity.getQuestions());
 				
 				test.setCategory(cDto);
+				test.setQuestions(qs);
 				test.setTestName(entity.getTestName());
 				test.setTimeTest(entity.getTimeTest());
 		

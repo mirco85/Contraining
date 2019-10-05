@@ -1,5 +1,6 @@
 package it.contrader.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +31,9 @@ public class Test {
 	
 	private Long timeTest;
 	private String testName;
+	
+	@OneToMany
+	@JoinColumn(name="idtest")
+	private List<Questions> questions = new ArrayList<>();
 
 }
