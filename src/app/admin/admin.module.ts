@@ -8,6 +8,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
 import { CategoryComponent } from './category/category.component';
 import { TestComponent } from './test/test.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { QuestiontestComponent } from './questiontest/questiontest.component';
 
 /**
  * Modulo dell'admin, qui vengono dichiarate le component che utilizza 
@@ -18,7 +19,7 @@ import { QuestionsComponent } from './questions/questions.component';
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, CategoryComponent, TestComponent, QuestionsComponent],
+  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, CategoryComponent, TestComponent, QuestionsComponent, QuestiontestComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

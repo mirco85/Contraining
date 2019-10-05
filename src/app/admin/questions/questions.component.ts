@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from 'src/service/questions.service';
 import { QuestionsDTO } from 'src/dto/questionsdto';
+import { TestDTO } from 'src/dto/Testdto';
+
 
 @Component({
   selector: 'app-questions',
@@ -11,6 +13,7 @@ export class QuestionsComponent implements OnInit {
 
   questions: QuestionsDTO[];
   questionToInsert : QuestionsDTO = new QuestionsDTO();
+  tests : TestDTO[];
 
   constructor(private service : QuestionsService) { }
 
@@ -21,7 +24,7 @@ export class QuestionsComponent implements OnInit {
   getAll() {
     this.service.getAll().subscribe((questions) => {
       this.questions = questions;
-    })
+    });
   }
 
   delete(question : QuestionsDTO) {

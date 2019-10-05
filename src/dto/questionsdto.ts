@@ -1,3 +1,5 @@
+import { TestDTO } from './testdto';
+
 export class QuestionsDTO {
     id : number;
     text : String;

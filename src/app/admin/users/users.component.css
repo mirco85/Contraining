@@ -9,7 +9,12 @@ table {
 	float: left;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
+	margin-top:50px;
 }
+
+table, th, td {
+	border: 5px solid rgb(220, 247, 253);
+  }
 
 th, td {
 	text-align: center;
@@ -22,11 +27,11 @@ td{
 
 
 tr:nth-child(even) {
-	background-color: #ffdb99;
+	background-color: #B3F2FB;
 }
 
 th {
-	background-color: darkorange;
+	background-color: #0CDCB6;
 	color: #ffffff;
 }
 
@@ -40,9 +45,12 @@ input, select{
 }
 
 input:hover,  input:active, input:focus{
-    border: 2px solid crimson;
+    border: 2px solid rgb(18, 122, 136);
 }
 
 button:hover{
-    background-color: crimson;
+    background-color: rgb(18, 122, 136);
+}
+button {
+	background-color: rgb(120, 179, 169);
 }

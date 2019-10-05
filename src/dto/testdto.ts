@@ -1,4 +1,5 @@
 import {CategoryDTO} from './categorydto';
+import { QuestionsDTO } from './questionsdto';
 
 
 export class TestDTO {
@@ -10,4 +11,6 @@ export class TestDTO {
     timeTest: number;
     
     testName: String;
+
+    questions: QuestionsDTO[];
  }
