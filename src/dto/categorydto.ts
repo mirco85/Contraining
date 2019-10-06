@@ -1,4 +1,4 @@
 export class CategoryDTO {
-    id : number;
+    idcategory : number;
     category : String;
 }

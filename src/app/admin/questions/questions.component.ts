@@ -28,7 +28,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   delete(question : QuestionsDTO) {
-    this.service.delete(question.id).subscribe(() => {
+    this.service.delete(question.idquestion).subscribe(() => {
       this.getAll();
     })
   }

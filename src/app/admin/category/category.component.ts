@@ -36,7 +36,7 @@ export class CategoryComponent implements OnInit {
    * @param category is the category we want to delete
    */
   delete(category : CategoryDTO) {
-    this.service.delete(category.id).subscribe(() => this.getCategories());
+    this.service.delete(category.idcategory).subscribe(() => this.getCategories());
   }
 
   insert(category : CategoryDTO) {

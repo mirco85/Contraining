@@ -1,7 +1,7 @@
 import { TestDTO } from './testdto';
 
 export class QuestionsDTO {
-    id : number;
+    idquestion : number;
     text : String;
     answer1 : String;
     answer2 : String;
