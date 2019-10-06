@@ -32,6 +32,10 @@ export class QuestiontestComponent implements OnInit {
       this.questions = questions;
     });
   }
+
+  /**
+   * check if dto list as initialized its question list
+   */
   checktest(){
     if(this.testupdate==null||typeof this.testupdate==='undefined'){
       return;
@@ -40,19 +44,62 @@ export class QuestiontestComponent implements OnInit {
       this.testupdate.questions = new Array();
     }
   }
-  addquestion(question:QuestionsDTO){
-    this.checktest();
-    this.testupdate.questions.push(question);
-  }
-  removequestion(question:QuestionsDTO){
-    this.checktest();
-    let index=this.testupdate.questions.findIndex((q) =>{
-      return q.id===question.id;
+
+  /**
+   * find the index of a question in a specified list
+   * @param question to get the index of
+   * @param list to search in
+   */
+  findIndex(question: QuestionsDTO, list : QuestionsDTO[]) : number {
+    let index = list.findIndex((q) =>{
+      return q.idquestion===question.idquestion;
     });
+    return index;
+  }
+  /**
+   * add a question to a specified list
+   * @param question to add
+   * @param list target for the specified question
+   */
+  addquestiontoList(question : QuestionsDTO, list: QuestionsDTO[]) {
+    list.push(question);
+  }
+  
+  /**
+   * remove a question to a specified list
+   * @param question to add
+   * @param list target for the specified question
+   */
+  removequestionfromList(question : QuestionsDTO, list : QuestionsDTO[]) {
+    let index=this.findIndex(question, list)
     if(index >= 0){
-      this.testupdate.questions.splice(index,1);
+      list.splice(index,1);
     }
   }
+
+  /**
+   * add a specified question to selected test
+   * @param question to add
+   */
+  addquestion(question:QuestionsDTO){
+    this.checktest();
+    this.addquestiontoList(question, this.testupdate.questions);
+    this.removequestionfromList(question, this.questions);
+  }
+
+  /**
+   * remove a specified question from selected test
+   * @param question to remove
+   */
+  removequestion(question:QuestionsDTO){
+    this.checktest();
+    this.removequestionfromList(question, this.testupdate.questions);
+    this.addquestiontoList(question, this.questions);
+  }
+
+  /**
+   * Updates the selected test
+   */
   update(){
     this.checktest();
     this.testservice.update(this.testupdate).subscribe(() =>{
