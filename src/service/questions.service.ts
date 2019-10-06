@@ -14,4 +14,8 @@ export class QuestionsService extends AbstractService<QuestionsDTO> {
     super(http);
     this.type = 'questions';
    }
+
+   getAllAvailable(): Observable<QuestionsDTO[]> {
+    return this.http.post<any>('http://localhost:8080/' + this.type + '/getavailable', null);
+  }
 }

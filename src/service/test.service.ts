@@ -16,4 +16,5 @@ import { TestDTO } from 'src/dto/testdto';
       super(http);
       this.type = 'test';
     }
+
   }

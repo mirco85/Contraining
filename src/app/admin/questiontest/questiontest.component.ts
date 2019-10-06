@@ -15,6 +15,7 @@ export class QuestiontestComponent implements OnInit {
   testupdate: TestDTO = new TestDTO();
   questiontoadd: QuestionsDTO = new QuestionsDTO();
   questiontoremove: QuestionsDTO = new QuestionsDTO();
+
   constructor(private questionservice: QuestionsService, private testservice: TestService) { }
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class QuestiontestComponent implements OnInit {
     });
   }
   getQuestions() {
-    this.questionservice.getAll().subscribe((questions) => {
+    this.questionservice.getAllAvailable().subscribe((questions) => {
       this.questions = questions;
     });
   }
