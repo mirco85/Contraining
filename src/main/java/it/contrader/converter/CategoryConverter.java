@@ -12,7 +12,7 @@ public class CategoryConverter  extends AbstractConverter<Category,CategoryDTO> 
 	public Category toEntity(CategoryDTO categoryDTO) {
 		Category category = null;
 		if (categoryDTO != null) {
-			category = new Category(categoryDTO.getId(),categoryDTO.getCategory());			
+			category = new Category(categoryDTO.getIdcategory(),categoryDTO.getCategory());			
 		} 
 		return category;
 }
@@ -21,7 +21,7 @@ public class CategoryConverter  extends AbstractConverter<Category,CategoryDTO> 
 	public CategoryDTO toDTO(Category category) {
 		CategoryDTO categoryDTO = null;
 		if (category != null) {
-			categoryDTO = new CategoryDTO(category.getId(),category.getCategory());
+			categoryDTO = new CategoryDTO(category.getIdcategory(),category.getCategory());
 			
 		}
 		return categoryDTO;

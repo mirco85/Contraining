@@ -14,15 +14,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
-
-
-
 public class Questions {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long idquestion;
 	@Column(unique = true)
 	private String text;
 	private String answer1,answer2,answer3;
