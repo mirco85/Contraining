@@ -32,6 +32,7 @@ tr:nth-child(even) {
 th {
 	background-color: #0CDCB6;
 	color: #ffffff;
+	font-size: 2vh;
 }
 
 a:hover {
@@ -52,4 +53,27 @@ button:hover{
 }
 button {
 	background-color: rgb(120, 179, 169);
+}
+
+
+/* 
+	Regole particolari
+*/
+table.somepadding td, table.somepadding th {
+	padding: 1vw;
+}
+td.selezionetest label {
+	margin-right: 1vw;
+}
+tr.centeredtds td, td.centeredtd {
+	text-align: center;
+	vertical-align: middle;
+}
+button.commandButton {
+	display: block;
+	box-sizing: border-box;
+	margin: 1vh auto;
+}
+select {
+	min-width: 65%;
 }
