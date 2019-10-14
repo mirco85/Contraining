@@ -1,0 +1,78 @@
+form{
+    margin-top:270px;
+    width: 55%;
+    padding: 10px;
+    border-radius:0;
+    border-color: crimson;
+}
+
+img{
+    position: inherit;
+    width:50%;
+    margin: 12%;
+}
+
+button{
+    background-color: hsl(33, 100%, 50%);
+    display: flex;
+
+    box-sizing: content-box;
+    padding: 1vh;
+    border-radius: 0.6vh!important;
+    border-style: solid;
+    border: 0.1vh solid rgb(213, 113, 0);
+
+    align-items: center;
+    justify-content: center;
+    margin-right: 2vh;
+}/* You can add global styles to this file, and also import other style files */
+
+button:hover {
+    background-color: hsl(33, 100%, 45%);
+}
+
+div.inlineButtons {
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    display: block;
+    box-sizing: content-box;
+    padding: 1vh;
+    border: 0.1vh solid rgb(213, 113, 0)!important;
+    border-radius: 1vh!important;
+    background-color: rgba(19, 10, 0, 0.2)!important;
+    color: white!important;
+}
+input::placeholder {
+    color: white!important;
+}
+
+.container-fluid{
+    background-color: darkorange;
+    height: 100vh;
+}
+.form-control{
+border: none;
+background-color: darkorange;
+color: white;
+border-bottom: 1px solid white;
+}
+
+.login{
+border: none;
+background-color: darkorange;
+color: white;
+border: 1px solid white;
+border-radius: 2px;
+padding-top: 10px;
+padding-right: auto;
+padding-bottom: 10px;
+padding-left: auto;
+}
+
+p{
+font-size: 14px;
+color: white;
+}

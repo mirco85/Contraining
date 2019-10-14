@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { LoginDTO } from 'src/dto/logindto';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/service/login.service';
+import { UserDTO } from 'src/dto/UserDTO';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  loginDTO: LoginDTO;
+
+  constructor(private service: LoginService, private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  login(f: NgForm): void {
+    this.loginDTO = new LoginDTO(f.value.username, f.value.password);
+    this.service.login(this.loginDTO).subscribe((response : any) => {
+      localStorage.setItem('currentUser', JSON.stringify({authorities: response.id_token}));
+
+      this.service.getUser(this.loginDTO.username).subscribe((response : UserDTO) => {
+        localStorage.setItem('currentUserObject', JSON.stringify(response));
+
+        if(response.authorities.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/admin-dashboard']);
+        } else {
+          alert('Non è ancora stata implemetata un\'interfaccia utente');
+        }
+      })
+      /*if (user != null) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+
+        switch (user.usertype.toString()) {
+          case 'ADMIN': {
+            this.router.navigate(['/admin-dashboard']);
+            break;
+          }
+          case 'USER': {
+            this.router.navigate(['/user-dashboard']);
+            break;
+          }
+          default:
+            this.router.navigate(['/login']);
+        }
+      }
+      */
+    });
+  }
+}
