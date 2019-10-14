@@ -4,6 +4,7 @@ import { UserDTO } from 'src/dto/userdto';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from 'src/dto/logindto';
 import { Observable } from 'rxjs';
+import { MicroService } from './microservice';
 
 /**
  * I service sono decorati da @Injectable. 
@@ -17,11 +18,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends AbstractService<UserDTO>{
+export class UserService extends MicroService<UserDTO>{
 
   constructor(http: HttpClient) {
-    super(http);
-    this.type = 'api/users';
+    super(http, '', 'users');
   }
+
+  getUser(username : string) {
+    let url = this.generateURL() + '/' + username;
+    return this.http.get(url, {
+        headers : {
+            Authorization: this.auth()
+        }
+    })
+} 
 
 }

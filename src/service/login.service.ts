@@ -25,11 +25,5 @@ export class LoginService {
         return this.http.post('http://localhost:8080/api/authenticate', loginDTO);
     }
 
-    getUser(username : string) {
-        return this.http.get('http://localhost:8080/api/users/' + username, {
-            headers : {
-                Authorization: this.auth()
-            }
-        })
-    } 
+    
 }
