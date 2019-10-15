@@ -11,25 +11,40 @@ import { TestService } from 'src/service/test.service';
 })
 export class QuestiontestComponent implements OnInit {
   questions: QuestionsDTO[];
+  questionsAvaliable : QuestionsDTO[];
+  questionChanged : QuestionsDTO[] = new Array();
   tests: TestsDTO[];
   testupdate: TestsDTO = new TestsDTO();
   questiontoadd: QuestionsDTO = new QuestionsDTO();
   questiontoremove: QuestionsDTO = new QuestionsDTO();
+  questionUpdated : number = 0;
 
   constructor(private questionservice: QuestionsService, private testservice: TestService) { }
 
   ngOnInit() {
     this.getTest();
-    this.getQuestions();
   }
   getTest() {
     this.testservice.getAll().subscribe((test) => {
       this.tests = test;
-    });
-  }
-  getQuestions() {
-    this.questionservice.getAll().subscribe((questions) => {
-      this.questions = questions;
+      this.questionservice.getAll().subscribe((questions) => {
+        this.questions = questions;
+        this.questionsAvaliable = new Array();
+        this.questions.forEach(q => {
+          if(q.testsId == null || typeof q.testsId === 'undefined') {
+            this.questionsAvaliable.push(q);
+          } else {
+            this.tests.forEach(t => {
+              if(t.questions == null || typeof t.questions === 'undefined') {
+                t.questions = new Array();
+              }
+              if(t.id === q.testsId) {
+                t.questions.push(q);
+              }
+            })
+          }
+        })
+      });
     });
   }
 
@@ -77,14 +92,33 @@ export class QuestiontestComponent implements OnInit {
     }
   }
 
+  addQuestionToTest(question : QuestionsDTO, test : TestsDTO) {
+    test.questions.push(question);
+    question.testsId = test.id;
+
+    if(this.findIndex(question, this.questionChanged) < 0) {
+      this.questionChanged.push(question);
+    }
+  }
+
+  removeQuestionFromTest(question : QuestionsDTO, test : TestsDTO) {
+    this.removequestionfromList(question, test.questions);
+    question.testsId = null;
+
+    if(this.findIndex(question, this.questionChanged) < 0) {
+      this.questionChanged.push(question);
+    }
+
+  }
+
   /**
    * add a specified question to selected test
    * @param question to add
    */
   addquestion(question:QuestionsDTO){
     this.checktest();
-    this.addquestiontoList(question, this.testupdate.questions);
-    this.removequestionfromList(question, this.questions);
+    this.addQuestionToTest(question, this.testupdate);
+    this.removequestionfromList(question, this.questionsAvaliable);
   }
 
   /**
@@ -93,8 +127,8 @@ export class QuestiontestComponent implements OnInit {
    */
   removequestion(question:QuestionsDTO){
     this.checktest();
-    this.removequestionfromList(question, this.testupdate.questions);
-    this.addquestiontoList(question, this.questions);
+    this.removeQuestionFromTest(question, this.testupdate);
+    this.addquestiontoList(question, this.questionsAvaliable);
   }
 
   /**
@@ -102,10 +136,16 @@ export class QuestiontestComponent implements OnInit {
    */
   update(){
     this.checktest();
-    this.testservice.update(this.testupdate).subscribe(() =>{
-      this.getTest();
-      this.getQuestions();
-    });
+    this.questionChanged.forEach(q => {
+      this.questionservice.update(q).subscribe(() => {
+          this.questionUpdated++;
+          if(this.questionUpdated === this.questionChanged.length) {
+            this.testservice.update(this.testupdate).subscribe(() =>{
+              this.getTest();
+            });
+          }
+      });
+    })
   }
 
 }

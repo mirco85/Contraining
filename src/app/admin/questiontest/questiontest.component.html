@@ -34,7 +34,7 @@
           <tr>
             <td>
               <select size=5 [(ngModel)]="questiontoadd">
-                <option *ngFor="let q of questions" [ngValue]="q">{{q.text}}</option>
+                <option *ngFor="let q of questionsAvaliable" [ngValue]="q">{{q.text}}</option>
               </select>
             </td>
             <td class="centeredtd">
