@@ -34,23 +34,6 @@ export class LoginComponent implements OnInit {
           alert('Non è ancora stata implemetata un\'interfaccia utente');
         }
       })
-      /*if (user != null) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-
-        switch (user.usertype.toString()) {
-          case 'ADMIN': {
-            this.router.navigate(['/admin-dashboard']);
-            break;
-          }
-          case 'USER': {
-            this.router.navigate(['/user-dashboard']);
-            break;
-          }
-          default:
-            this.router.navigate(['/login']);
-        }
-      }
-      */
     });
   }
 }

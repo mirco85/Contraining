@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from 'src/service/category.service';
-import { CategoryDTO } from 'src/dto/categorydto';
+import { CategoriesDTO } from 'src/dto/categoriesdto';
 
 @Component({
   selector: 'app-category',
@@ -9,8 +9,8 @@ import { CategoryDTO } from 'src/dto/categorydto';
 })
 export class CategoryComponent implements OnInit {
 
-  categories : CategoryDTO[];
-  categoryToInsert : CategoryDTO = new CategoryDTO();
+  categories : CategoriesDTO[];
+  categoryToInsert : CategoriesDTO = new CategoriesDTO();
 
   constructor(private service : CategoryService) { }
 
@@ -35,20 +35,20 @@ export class CategoryComponent implements OnInit {
    * After receiving the response we recall getCategories() to update the list
    * @param category is the category we want to delete
    */
-  delete(category : CategoryDTO) {
-    this.service.delete(category.idcategory).subscribe(() => this.getCategories());
+  delete(category : CategoriesDTO) {
+    this.service.delete(category.id).subscribe(() => this.getCategories());
   }
 
-  insert(category : CategoryDTO) {
+  insert(category : CategoriesDTO) {
     this.service.insert(category).subscribe(() => this.getCategories());
   }
 
-  update(category : CategoryDTO) {
+  update(category : CategoriesDTO) {
     this.service.update(category).subscribe(() => this.getCategories());
   }
 
   clear() {
-    this.categoryToInsert = new CategoryDTO();
+    this.categoryToInsert = new CategoriesDTO();
   }
 
 }

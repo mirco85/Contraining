@@ -1,9 +1,11 @@
-import { TestDTO } from './testdto';
+import { TestsDTO } from './testsdto';
 
 export class QuestionsDTO {
-    idquestion : number;
+    id : number;
     text : String;
     answer1 : String;
     answer2 : String;
     answer3 : String;
+    testsId : number;
+    testsTestName : String;
 }

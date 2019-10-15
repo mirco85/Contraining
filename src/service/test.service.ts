@@ -4,18 +4,20 @@ import { UserDTO } from 'src/dto/userdto';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from 'src/dto/logindto';
 import { Observable } from 'rxjs';
-import { TestDTO } from 'src/dto/testdto';
+import { TestsDTO } from 'src/dto/testsdto';
 import { MicroService } from './microservice';
 
 
 @Injectable({
     providedIn: 'root'
   })
-  export class TestService extends MicroService<TestDTO>{
+  export class TestService extends MicroService<TestsDTO>{
   
     constructor(http: HttpClient) {
       super(http, 'test', 'tests');
       
     }
+
+    
 
   }

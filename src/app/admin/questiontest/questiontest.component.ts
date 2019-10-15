@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsDTO } from 'src/dto/questionsdto';
-import { TestDTO } from 'src/dto/testdto';
+import { TestsDTO } from 'src/dto/testsdto';
 import { QuestionsService } from 'src/service/questions.service';
 import { TestService } from 'src/service/test.service';
 
@@ -11,8 +11,8 @@ import { TestService } from 'src/service/test.service';
 })
 export class QuestiontestComponent implements OnInit {
   questions: QuestionsDTO[];
-  tests: TestDTO[];
-  testupdate: TestDTO = new TestDTO();
+  tests: TestsDTO[];
+  testupdate: TestsDTO = new TestsDTO();
   questiontoadd: QuestionsDTO = new QuestionsDTO();
   questiontoremove: QuestionsDTO = new QuestionsDTO();
 
@@ -52,7 +52,7 @@ export class QuestiontestComponent implements OnInit {
    */
   findIndex(question: QuestionsDTO, list : QuestionsDTO[]) : number {
     let index = list.findIndex((q) =>{
-      return q.idquestion===question.idquestion;
+      return q.id===question.id;
     });
     return index;
   }

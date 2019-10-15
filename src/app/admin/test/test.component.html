@@ -28,8 +28,8 @@
         <tr>
           <td></td>
           <td>
-            <select [(ngModel)]="testtoinsert.category">
-                <option *ngFor="let c of categories" [ngValue]="c">{{c.category}}</option>
+            <select [(ngModel)]="testtoinsert.categoriesId">
+                <option *ngFor="let c of categories" [ngValue]="c.id">{{c.category}}</option>
             </select>
           </td>
           <td>
@@ -47,11 +47,11 @@
         </tr>
         <tr *ngFor="let test of tests">
           <td>
-              <span>{{test.category.category}}</span>
+              <span>{{test.categoriesCategory}}</span>
           </td>
           <td>
-              <select [(ngModel)]="test.category">
-                  <option *ngFor="let c of categories" [ngValue]="c" [selected]="c.id == test.category.id">{{c.category}}</option>
+              <select [(ngModel)]="test.categoriesId">
+                  <option *ngFor="let c of categories" [ngValue]="c.id" [selected]="c.id == test.categoriesId">{{c.category}}</option>
               </select>
           </td>
           <td>

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {AbstractService} from './abstractservice';
-import {CategoryDTO} from 'src/dto/categorydto';
+import {CategoriesDTO} from 'src/dto/categoriesdto';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { MicroService } from './microservice';
@@ -8,7 +8,7 @@ import { MicroService } from './microservice';
 @Injectable({
     providedIn: 'root'
 })
-export class CategoryService extends MicroService<CategoryDTO> {
+export class CategoryService extends MicroService<CategoriesDTO> {
     constructor(http : HttpClient) {
         super(http, 'test', 'categories');
     }
