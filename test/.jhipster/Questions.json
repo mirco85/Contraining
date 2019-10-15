@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "tests",
+            "otherEntityName": "tests",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "testName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "answer1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer3",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20191015075111",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "questions",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "test"
+}

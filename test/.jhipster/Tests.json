@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "categories",
+            "otherEntityName": "categories",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "category"
+        },
+        {
+            "relationshipName": "questions",
+            "otherEntityName": "questions",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "tests"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "testName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "timeTest",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20191015074738",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "tests",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "test"
+}
