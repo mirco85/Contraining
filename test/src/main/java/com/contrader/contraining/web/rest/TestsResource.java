@@ -1,12 +1,15 @@
 package com.contrader.contraining.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.contrader.contraining.service.AnswersService;
 import com.contrader.contraining.service.TestsService;
+import com.contrader.contraining.service.dto.AnswersDTO;
 import com.contrader.contraining.web.rest.errors.BadRequestAlertException;
 import com.contrader.contraining.web.rest.util.HeaderUtil;
 import com.contrader.contraining.web.rest.util.PaginationUtil;
 import com.contrader.contraining.service.dto.TestsDTO;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.checkerframework.checker.units.qual.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -36,8 +39,21 @@ public class TestsResource {
 
     private final TestsService testsService;
 
-    public TestsResource(TestsService testsService) {
+    private final AnswersService answersService;
+
+    public TestsResource(TestsService testsService, AnswersService answersService) {
         this.testsService = testsService;
+        this.answersService = answersService;
+    }
+
+
+    @GetMapping("/textTest")
+    @Timed
+    public ResponseEntity<String> getTestText() {
+        log.debug("Trying to get some text from answer micro through test micro\n\n\n\n");
+        return ResponseEntity.ok()
+        .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, "TestFeignOK"))
+        .body(answersService.getText());
     }
 
     /**
