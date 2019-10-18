@@ -1,9 +1,12 @@
 package com.contrader.contraining.service.impl;
 
 import com.contrader.contraining.service.AnswersService;
+import com.contrader.contraining.service.dto.AnswersDTO;
 import com.contrader.contraining.web.rest.client.AnswersServiceProxy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -14,6 +17,12 @@ public class AnswerServiceImpl implements AnswersService {
 
     public AnswerServiceImpl(AnswersServiceProxy serviceProxy) {
         this.answersProxy = serviceProxy;
+    }
+
+
+    @Override
+    public List<AnswersDTO> getQuestionAnswers(Long idQuestion) {
+        return this.answersProxy.getAnswersByQuestion(idQuestion).getBody();
     }
 
     @Override

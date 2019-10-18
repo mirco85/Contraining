@@ -46,7 +46,6 @@ public class TestsResource {
         this.answersService = answersService;
     }
 
-
     @GetMapping("/textTest")
     @Timed
     public ResponseEntity<String> getTestText() {

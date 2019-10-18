@@ -10,10 +10,10 @@ import java.util.List;
 @FeignClient(name = "answer")
 public interface AnswersServiceProxy {
 
-    /*@GetMapping("/answers")
-    ResponseEntity<List<AnswersDTO>> getAllAnswers();
+    @RequestMapping(value = "/api/answersByQuestion/{id}")
+    ResponseEntity<List<AnswersDTO>> getAnswersByQuestion(@PathVariable("id") Long idQuestion);
 
-    @GetMapping("/answers/{id}")
+    /*@GetMapping("/answers/{id}")
     ResponseEntity<AnswersDTO> getAnswers(@PathVariable(value = "id") Long id);*/
 
     @RequestMapping(value = "/api/sometext/{varText}")

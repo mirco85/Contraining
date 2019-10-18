@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface AnswersService {
 
-    /*List<AnswersDTO> getAllAnswers();
-
-    AnswersDTO getAnswers(Long id);*/
+    List<AnswersDTO> getQuestionAnswers(Long idQuestion);
+    /*List<AnswersDTO> getUserAnswers(Long idUser);
+    List<AnswersDTO> getUserQuestionAnswers(Long idUser, Long idQuestion);*/
 
     String getText();
 

@@ -1,7 +1,9 @@
 package com.contrader.contraining.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.contrader.contraining.service.AnswersService;
 import com.contrader.contraining.service.QuestionsService;
+import com.contrader.contraining.service.dto.AnswersDTO;
 import com.contrader.contraining.web.rest.errors.BadRequestAlertException;
 import com.contrader.contraining.web.rest.util.HeaderUtil;
 import com.contrader.contraining.web.rest.util.PaginationUtil;
@@ -35,9 +37,11 @@ public class QuestionsResource {
     private static final String ENTITY_NAME = "questions";
 
     private final QuestionsService questionsService;
+    private final AnswersService answersService;
 
-    public QuestionsResource(QuestionsService questionsService) {
+    public QuestionsResource(QuestionsService questionsService, AnswersService aService) {
         this.questionsService = questionsService;
+        this.answersService = aService;
     }
 
     /**
@@ -124,4 +128,15 @@ public class QuestionsResource {
         questionsService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
+    @GetMapping("/questions/answers/{id}")
+    @Timed
+    public ResponseEntity<List<AnswersDTO>> getAnswersByQuestion(@PathVariable("id") Long idQuestion) {
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, "AnswersByQuestion"))
+            .body(answersService.getQuestionAnswers(idQuestion));
+    }
+
+
 }
