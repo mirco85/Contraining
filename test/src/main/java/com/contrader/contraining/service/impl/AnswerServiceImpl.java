@@ -26,6 +26,16 @@ public class AnswerServiceImpl implements AnswersService {
     }
 
     @Override
+    public List<AnswersDTO> getUserAnswers(Long idUser) {
+        return this.answersProxy.getAnswersByUser(idUser).getBody();
+    }
+
+    @Override
+    public List<AnswersDTO> getUserQuestionAnswers(Long idUser, Long idQuestion) {
+        return this.answersProxy.getAnswersByUserAndQuestion(idUser, idQuestion).getBody();
+    }
+
+    @Override
     public String getText() {
         return answersProxy.getSomeText("Calling Answers From Test! :)").getBody();
     }
